@@ -111,7 +111,7 @@ class AONet:
         if datasets is None:
             datasets = self.hps.datasets
         if ".txt" in datasets: 
-            datasets = self.get_datasets(datasets)
+            datasets = get_datasets(datasets)
 
         datasets_dict = {}
         for dataset in datasets:
