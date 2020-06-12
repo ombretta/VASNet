@@ -94,12 +94,6 @@ class AONet:
 
         return keys_out
 
-    
-    def get_datasets(datasets_list):
-        with open(datasets_list, "r") as f:
-            datasets = f.read()
-        return datasets[0].split("\n")
-    
         
     def load_datasets(self, datasets = None):
         """
@@ -112,7 +106,8 @@ class AONet:
             datasets = self.hps.datasets
 
         if ".txt" in datasets[0]: 
-            datasets = get_datasets(datasets[0])
+            with open(datasets[0], "r") as f:
+                datasets = f.read()[0].split("\n")
 
         datasets_dict = {}
         for dataset in datasets:
