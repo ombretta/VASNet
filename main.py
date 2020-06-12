@@ -106,6 +106,7 @@ class AONet:
 
         datasets_dict = {}
         for dataset in datasets:
+            print(dataset)
             _, base_filename = os.path.split(dataset)
             base_filename, _ = os.path.splitext(base_filename)
             print("Loading:", dataset)
