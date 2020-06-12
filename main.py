@@ -5,6 +5,7 @@ __status__ = "Research"
 __date__ = "1/12/2018"
 __license__= "MIT License"
 
+import os
 import torch
 from torchvision import transforms
 import numpy as np
@@ -93,7 +94,13 @@ class AONet:
 
         return keys_out
 
-
+    
+    def get_datasets(datasets_list):
+        with open(datasets_list, "r") as f:
+            datasets = f.read()
+        return datasets[0].split("\n")
+    
+        
     def load_datasets(self, datasets = None):
         """
         Loads all h5 datasets from the datasets list into a dictionary self.dataset
@@ -103,6 +110,8 @@ class AONet:
         """
         if datasets is None:
             datasets = self.hps.datasets
+        if ".txt" in datasets: 
+            datasets = self.get_datasets(datasets)
 
         datasets_dict = {}
         for dataset in datasets:
