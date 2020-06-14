@@ -43,16 +43,9 @@ class HParameters:
 
 
     def get_dataset_by_name(self, dataset_name):
-<<<<<<< HEAD
         print(dataset_name)
         for d in self.datasets:
 
-=======
-        
-        print(dataset_name)
-        for d in self.datasets:
-            
->>>>>>> 724d8b7055958c2f2509e2be82bc594afeb1a4fb
             print(d)
             if dataset_name in d:
                 return [d]
@@ -60,18 +53,12 @@ class HParameters:
 
     def load_from_args(self, args):
         for key in args:
-            print(key)
             val = args[key]
             if val is not None:
                 if hasattr(self, key) and isinstance(getattr(self, key), list):
                     val = val.split()
 
                 setattr(self, key, val)
-            
-            if key == "datasets" and ".txt" in args["datasets"]: 
-                with open(args.datasets, "r") as f:
-                    self.datasets = f.read().split("\n")
-                    if "" in self.datasets: self.datasets.remove("") #CHANGED HERE
 
     def __str__(self):
         vars = [attr for attr in dir(self) if not callable(getattr(self,attr)) and not (attr.startswith("__") or attr.startswith("_"))]
