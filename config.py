@@ -43,16 +43,10 @@ class HParameters:
 
 
     def get_dataset_by_name(self, dataset_name):
-<<<<<<< HEAD
-        print(dataset_name)
-        for d in self.datasets:
 
-=======
-        
         print(dataset_name)
         for d in self.datasets:
             
->>>>>>> 724d8b7055958c2f2509e2be82bc594afeb1a4fb
             print(d)
             if dataset_name in d:
                 return [d]
@@ -69,7 +63,7 @@ class HParameters:
                 setattr(self, key, val)
             
             if key == "datasets" and ".txt" in args["datasets"]: 
-                with open(args.datasets, "r") as f:
+                with open(args["datasets"], "r") as f:
                     self.datasets = f.read().split("\n")
                     if "" in self.datasets: self.datasets.remove("") #CHANGED HERE
 

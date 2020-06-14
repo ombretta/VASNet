@@ -13,7 +13,7 @@ class HParameters:
     def __init__(self):
         self.verbose = False
         self.use_cuda = True
-        self.cuda_device = 0
+        self.cuda_device = -1
         self.max_summary_length = 0.15
 
         self.l2_req = 0.00001
@@ -43,9 +43,10 @@ class HParameters:
 
 
     def get_dataset_by_name(self, dataset_name):
+
         print(dataset_name)
         for d in self.datasets:
-
+            
             print(d)
             if dataset_name in d:
                 return [d]
@@ -53,12 +54,18 @@ class HParameters:
 
     def load_from_args(self, args):
         for key in args:
+            print(key)
             val = args[key]
             if val is not None:
                 if hasattr(self, key) and isinstance(getattr(self, key), list):
                     val = val.split()
 
                 setattr(self, key, val)
+            
+            if key == "datasets" and ".txt" in args["datasets"]: 
+                with open(args["datasets"], "r") as f:
+                    self.datasets = f.read().split("\n")
+                    if "" in self.datasets: self.datasets.remove("") #CHANGED HERE
 
     def __str__(self):
         vars = [attr for attr in dir(self) if not callable(getattr(self,attr)) and not (attr.startswith("__") or attr.startswith("_"))]
