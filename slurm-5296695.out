@@ -1,0 +1,56 @@
+
+The following have been reloaded with a version change:
+  1) cudnn/10.0-7.4.2.24 => cudnn/10.0-7.6.0.64
+
+Packages & system versions:
+----------------------------------------------------------------------
+display :  	NVRM version: NVIDIA UNIX x86_64 Kernel Module  450.36.06  Mon Jun  1 23:19:54 UTC 2020
+	GCC version:  gcc version 4.8.5 20150623 (Red Hat 4.8.5-39) (GCC)
+cuda :  NA
+cudnn :  7605
+platform :  Linux-3.10.0-1127.8.2.el7.x86_64-x86_64-with-glibc2.10
+python :  (3, 8, 2)
+torch :  1.5.0
+numpy :  1.18.1
+h5py :  2.10.0
+json :  2.0.9
+ortools :  7.6.7691
+torchvision :  0.6.0a0+82fd1c8
+
+Parameters:
+----------------------------------------------------------------------
+[0] cuda_device: 0
+[1] datasets: ['datasets/datasets_list.txt']
+[2] epochs_max: 300
+[3] l2_req: 1e-05
+[4] lr: [5e-05]
+[5] lr_epochs: [0]
+[6] max_summary_length: 0.15
+[7] output_dir: data
+[8] root: 
+[9] splits: ['splits/tvsum_splits.json', 'splits/summe_splits.json', 'splits/tvsum_aug_splits.json', 'splits/summe_aug_splits.json']
+[10] train: True
+[11] train_batch_size: 1
+[12] use_cuda: True
+[13] verbose: False
+
+Setting CUDA device:  0
+.
+Loading: .
+Traceback (most recent call last):
+  File "main.py", line 478, in <module>
+    train(hps)
+  File "main.py", line 425, in train
+    ao.load_datasets(datasets=datasets)
+  File "main.py", line 120, in load_datasets
+    datasets_dict[base_filename] = h5py.File(dataset, 'r')
+  File "/home/nfs/ombrettastraff/envs/h5/lib/python3.8/site-packages/h5py/_hl/files.py", line 406, in __init__
+    fid = make_fid(name, mode, userblock_size,
+  File "/home/nfs/ombrettastraff/envs/h5/lib/python3.8/site-packages/h5py/_hl/files.py", line 173, in make_fid
+    fid = h5f.open(name, flags, fapl=fapl)
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/h5f.pyx", line 88, in h5py.h5f.open
+OSError: Unable to open file (file read failed: time = Fri Jun 12 18:08:26 2020
+, filename = '.', file descriptor = 23, errno = 21, error message = 'Is a directory', buf = 0x7ffd2156e660, total read size = 8, bytes this sub-read = 8, bytes actually read = 18446744073709551615, offset = 0)
+srun: error: insy12: task 0: Exited with exit code 1

@@ -29,7 +29,9 @@ class HParameters:
         self.datasets=['datasets/eccv16_dataset_summe_google_pool5.h5',
                        'datasets/eccv16_dataset_tvsum_google_pool5.h5',
                        'datasets/eccv16_dataset_ovp_google_pool5.h5',
-                       'datasets/eccv16_dataset_youtube_google_pool5.h5']
+                       'datasets/eccv16_dataset_youtube_google_pool5.h5',
+                       '../SUM-GAN-AAE/data/SumMe/summe_i3d_mixed5c_aligned.h5',
+                       '../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5']
 
         self.splits = ['splits/tvsum_splits.json',
                         'splits/summe_splits.json']

@@ -107,7 +107,8 @@ class AONet:
 
         if ".txt" in datasets[0]: 
             with open(datasets[0], "r") as f:
-                datasets = f.read()[0].split("\n")
+                datasets = f.read().split("\n")
+                if "" in datasets: datasets.remove("")
 
         datasets_dict = {}
         for dataset in datasets:
