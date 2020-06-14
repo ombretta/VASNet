@@ -104,11 +104,12 @@ class AONet:
         """
         if datasets is None:
             datasets = self.hps.datasets
-
-        if ".txt" in datasets[0]: 
-            with open(datasets[0], "r") as f:
-                datasets = f.read().split("\n")
-                if "" in datasets: datasets.remove("")
+        
+        print(datasets)
+        # if ".txt" in datasets[0]: 
+        #     with open(datasets[0], "r") as f:
+        #         datasets = f.read().split("\n")
+        #         if "" in datasets: datasets.remove("")
 
         datasets_dict = {}
         for dataset in datasets:
