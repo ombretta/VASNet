@@ -106,10 +106,10 @@ class AONet:
             datasets = self.hps.datasets
         
         print(datasets)
-        if ".txt" in datasets[0]: 
-            with open(datasets[0], "r") as f:
-                datasets = f.read().split("\n")
-                if "" in datasets: datasets.remove("")
+        # if ".txt" in datasets[0]: 
+        #     with open(datasets[0], "r") as f:
+        #         datasets = f.read().split("\n")
+        #         if "" in datasets: datasets.remove("")
 
         datasets_dict = {}
         for dataset in datasets:
@@ -410,6 +410,7 @@ def train(hps):
 
     for split_filename in hps.splits:
         dataset_name, dataset_type, splits = parse_splits_filename(split_filename)
+        print(dataset_name, dataset_type, splits)
 
         # For no augmentation use only a dataset corresponding to the split file
         datasets = None
