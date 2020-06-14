@@ -110,8 +110,7 @@ class AONet:
             with open(datasets[0], "r") as f:
                 datasets = f.read().split("\n")
                 if "" in datasets: datasets.remove("")
-            
-        print(datasets)
+
         datasets_dict = {}
         for dataset in datasets:
             print(dataset)
