@@ -13,11 +13,12 @@ module use /opt/insy/modulefiles\n\
 module load cuda/10.0 cudnn/10.0-7.6.0.64\n\
 srun python main.py --train "
 
-features_type = "i3d"
+features_type = "i3d" #google
 
 if features_type == "i3d":
     
     text += " --datasets datasets/datasets_list.txt --output-dir=i3d_features"
+else: text += " --output-dir=google_features"
             
 filename = "VASNet_" + features_type + ".sbatch"
 
