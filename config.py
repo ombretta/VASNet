@@ -54,6 +54,7 @@ class HParameters:
 
     def load_from_args(self, args):
         for key in args:
+            print(key)
             val = args[key]
             if val is not None:
                 if hasattr(self, key) and isinstance(getattr(self, key), list):
