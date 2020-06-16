@@ -17,6 +17,8 @@ import h5py
 import json
 import torch.nn.init as init
 
+from tensorboardX import SummaryWriter
+
 from config import  *
 from sys_utils import *
 from vsum_tools import  *
@@ -206,6 +208,8 @@ class AONet:
 
 
     def train(self, output_dir='EX-0'):
+        
+        writer = SummaryWriter(log_dir="./output_dir/runs/")
 
         print("Initializing VASNet model and optimizer...")
         self.model.train()
@@ -268,6 +272,11 @@ class AONet:
             avg_loss = np.array(avg_loss)
             print("   Train loss: {0:.05f}".format(np.mean(avg_loss[:, 0])), end='')
             print('   Test F-score avg/max: {0:0.5}/{1:0.5}'.format(val_fscore, max_val_fscore))
+            
+            # Send losses and accuracies to tensorboard 
+            curr_time = time.time()
+            writer.add_scalar("loss/training", np.mean(avg_loss[:, 0]), epoch, curr_time)
+            writer.add_scalar("fscore/validation", val_fscore, epoch, curr_time)
 
             if self.verbose:
                 video_scores = [["No", "Video", "F-score"]] + video_scores
@@ -280,6 +289,8 @@ class AONet:
             os.makedirs(path, exist_ok=True)
             filename = str(epoch)+'_'+str(round(val_fscore*100,3))+'.pth.tar'
             torch.save(self.model.state_dict(), os.path.join(path, filename))
+            
+        writer.close()
 
         return max_val_fscore, max_val_fscore_epoch
 
