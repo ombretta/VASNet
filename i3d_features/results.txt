@@ -2,11 +2,3 @@ splits/tvsum_splits.json, 0, 0.5681722824551889, 8
 splits/tvsum_splits.json, 1, 0.5504229559857462, 155
 splits/tvsum_splits.json, 2, 0.5197283329730544, 9
 splits/tvsum_splits.json, 3, 0.5720764666766143, 7
-splits/tvsum_splits.json, 4, 0.5509346040573545, 58
-splits/tvsum_splits.json, avg, 0.5522669284295916
-splits/summe_splits.json, 0, 0.42014951862559957, 46
-splits/summe_splits.json, 1, 0.4340095725518843, 58
-splits/summe_splits.json, 2, 0.4697162788639531, 85
-splits/summe_splits.json, 3, 0.500998161430443, 19
-splits/summe_splits.json, 4, 0.4006030988676034, 10
-splits/summe_splits.json, avg, 0.44509532606789665

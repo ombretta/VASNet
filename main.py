@@ -209,7 +209,7 @@ class AONet:
 
     def train(self, output_dir='EX-0'):
         
-        writer = SummaryWriter(log_dir="./output_dir/runs/")
+        writer = SummaryWriter(log_dir="./"+output_dir+"/runs/")
 
         print("Initializing VASNet model and optimizer...")
         self.model.train()
@@ -262,7 +262,10 @@ class AONet:
                 loss.backward()
                 self.optimizer.step()
                 avg_loss.append([float(loss), float(loss_att)])
-
+            
+            # Evaluate train dataset
+            train_fscore, train_video_scores = self.eval(self.train_keys)
+            
             # Evaluate test dataset
             val_fscore, video_scores = self.eval(self.test_keys)
             if max_val_fscore < val_fscore:
@@ -276,6 +279,7 @@ class AONet:
             # Send losses and accuracies to tensorboard 
             curr_time = time.time()
             writer.add_scalar("loss/training", np.mean(avg_loss[:, 0]), epoch, curr_time)
+            writer.add_scalar("fscore/training", train_fscore, epoch, curr_time)
             writer.add_scalar("fscore/validation", val_fscore, epoch, curr_time)
 
             if self.verbose:
