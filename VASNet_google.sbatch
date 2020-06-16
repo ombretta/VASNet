@@ -8,4 +8,4 @@
 #SBATCH --gres=gpu:1
 module use /opt/insy/modulefiles
 module load cuda/10.0 cudnn/10.0-7.6.0.64
-srun python main.py --train 
+srun python main.py --train  --output-dir=google_features
