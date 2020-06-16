@@ -13,7 +13,7 @@ module use /opt/insy/modulefiles\n\
 module load cuda/10.0 cudnn/10.0-7.6.0.64\n\
 srun python main.py --train "
 
-features_type = "i3d" #google
+features_type = "google" #"i3d"
 
 if features_type == "i3d":
     
