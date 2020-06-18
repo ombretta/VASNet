@@ -4,7 +4,7 @@ import math
 text = "#!/bin/sh\n\
 #SBATCH --partition=general\n\
 #SBATCH --qos=short\n\
-#SBATCH --time=2:30:00\n\
+#SBATCH --time=1:30:00\n\
 #SBATCH --ntasks=1\n\
 #SBATCH --cpus-per-task=2\n\
 #SBATCH --mem=2000\n\
@@ -25,12 +25,14 @@ else: text += " --output-dir=google_features"
 
 learning_rate = [0.005, 0.0005, 0.00005]
 weight_decay = [0.001, 0.0001, 0.00001]
+epochs_max = 50
 
 for lr in learning_rate:
     for l2_req in weight_decay:
         
         name_extension = "_lr" + str(lr) + "_l2req" + str(l2_req)
-        full_text = text + name_extension + " --lr=" + str(lr) + " --l2_req=" + str(l2_req)
+        full_text = text + name_extension + " --lr=" + str(lr) + \
+            " --l2_req=" + str(l2_req) + " --epochs_max=" + str(epochs_max)
             
         filename = "VASNet_" + features_type + "_lr" + str(lr) + "_l2req" + str(l2_req) +".sbatch"
         

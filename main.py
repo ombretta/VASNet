@@ -483,6 +483,7 @@ if __name__ == "__main__":
     parser.add_argument('--l2_req', type=float, default=0.00001, help="Weight_decay") 
     parser.add_argument('--lr_epochs', type=int, default=0, help="") 
     parser.add_argument('--lr', type=float, default=0.00005, help="Learning rate") 
+    parser.add_argument('--epochs_max', type=int, default=300, help="Maximum number of epochs") 
         
     args = parser.parse_args()
 
