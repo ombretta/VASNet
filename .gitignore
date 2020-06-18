@@ -3,3 +3,6 @@ datasets/
 splits/
 i3d_features/
 google_features/
+output_dir/
+*.outÃ
+i3d_features--lr=5e-05--l2_req=1e-05/
