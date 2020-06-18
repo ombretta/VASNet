@@ -531,3 +531,127 @@ WARNING:root:NaN or Inf found in input tensor.
 WARNING:root:NaN or Inf found in input tensor.
 WARNING:root:NaN or Inf found in input tensor.
 WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+mv: cannot stat 'i3d_features/models_temp/tvsum_splits_0/73_*.pth.tar': No such file or directory
+Epoch: 265/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 266/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 267/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 268/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 269/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 270/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 271/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 272/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 273/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 274/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 275/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 276/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 277/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 278/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 279/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 280/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 281/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 282/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 283/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 284/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 285/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 286/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 287/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 288/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 289/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 290/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 291/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 292/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 293/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 294/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 295/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 296/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 297/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 298/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Epoch: 299/300   Train loss: nan   Test F-score avg/max: 0.035038/0.60393
+Split: splits/tvsum_splits.json   Best F-score: 0.60393   Model: i3d_features/models/tvsum_splits_0_0.6039326477867952.tar.pth
+Setting CUDA device:  0
+['../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5']
+../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Loading: ../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Loading splits from:  splits/tvsum_splits.json
+Selecting split:  1
+tvsum
+../SUM-GAN-AAE/data/SumMe/summe_i3d_mixed5c_aligned.h5
+../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Initializing VASNet model and optimizer...
+Starting training...
+Epoch: 0/300    Train loss: 0.18835   Test F-score avg/max: 0.02655/0.02655
+Epoch: 1/300    Train loss: 0.18338   Test F-score avg/max: 0.02655/0.02655
+Epoch: 2/300    Train loss: 0.18334   Test F-score avg/max: 0.02655/0.02655
+Epoch: 3/300    Train loss: 0.18334   Test F-score avg/max: 0.02655/0.02655
+Epoch: 4/300    Train loss: 0.18334   Test F-score avg/max: 0.02655/0.02655
+Epoch: 5/300    Train loss: 0.18334   Test F-score avg/max: 0.02655/0.02655
+Epoch: 6/300    Train loss: 0.18334   Test F-score avg/max: 0.02655/0.02655
+Epoch: 7/300    Train loss: 0.18590   Test F-score avg/max: 0.02655/0.02655
+Epoch: 8/300    Train loss: 0.18334   Test F-score avg/max: 0.02655/0.02655
+Epoch: 9/300    Train loss: 0.18334   Test F-score avg/max: 0.02655/0.02655
+Epoch: 10/300   Train loss: 0.18332   Test F-score avg/max: 0.02655/0.02655
+Epoch: 11/300   Train loss: 0.18319   Test F-score avg/max: 0.02655/0.02655
+Epoch: 12/300   Train loss: 0.11393   Test F-score avg/max: 0.60251/0.60251
+Epoch: 13/300   Train loss: 0.05799   Test F-score avg/max: 0.59343/0.60251
+Epoch: 14/300   Train loss: 0.05735   Test F-score avg/max: 0.59343/0.60251
+Epoch: 15/300   Train loss: 0.05790   Test F-score avg/max: 0.59813/0.60251
+Epoch: 16/300   Train loss: 0.05779   Test F-score avg/max: 0.63251/0.63251
+Epoch: 17/300   Train loss: 0.05771   Test F-score avg/max: 0.59854/0.63251
+Epoch: 18/300   Train loss: 0.05682   Test F-score avg/max: 0.59343/0.63251
+Epoch: 19/300   Train loss: 0.05848   Test F-score avg/max: 0.5906/0.63251
+Epoch: 20/300   Train loss: 0.05711   Test F-score avg/max: 0.59343/0.63251
+Epoch: 21/300   Train loss: 0.05779   Test F-score avg/max: 0.59832/0.63251
+Epoch: 22/300   Train loss: 0.05719   Test F-score avg/max: 0.60496/0.63251
+Epoch: 23/300   Train loss: 0.05708   Test F-score avg/max: 0.61757/0.63251
+Epoch: 24/300   Train loss: 0.05718   Test F-score avg/max: 0.59343/0.63251
+Epoch: 25/300   Train loss: 0.05674   Test F-score avg/max: 0.59937/0.63251
+Epoch: 26/300   Train loss: 0.05716   Test F-score avg/max: 0.61275/0.63251
+Epoch: 27/300   Train loss: 0.05828   Test F-score avg/max: 0.59343/0.63251
+Epoch: 28/300   Train loss: 0.05767   Test F-score avg/max: 0.59343/0.63251
+Epoch: 29/300   Train loss: 0.05720   Test F-score avg/max: 0.60763/0.63251
+Epoch: 30/300   Train loss: 0.05742   Test F-score avg/max: 0.60235/0.63251
+Epoch: 31/300   Train loss: 0.05731   Test F-score avg/max: 0.61283/0.63251
+Epoch: 32/300   Train loss: 0.05758   Test F-score avg/max: 0.62447/0.63251
+Epoch: 33/300   Train loss: 0.05717   Test F-score avg/max: 0.62407/0.63251
+Epoch: 34/300   Train loss: 0.05720   Test F-score avg/max: 0.59343/0.63251
+Epoch: 35/300   Train loss: 0.05724   Test F-score avg/max: 0.61961/0.63251
+Epoch: 36/300   Train loss: 0.05750   Test F-score avg/max: 0.6386/0.6386
+Epoch: 37/300   Train loss: 0.05742   Test F-score avg/max: 0.59343/0.6386
+Epoch: 38/300   Train loss: 0.05758   Test F-score avg/max: 0.60365/0.6386
+Epoch: 39/300   Train loss: 0.05746   Test F-score avg/max: 0.6197/0.6386
+Epoch: 40/300   Train loss: 0.05808   Test F-score avg/max: 0.5954/0.6386
+Epoch: 41/300   Train loss: 0.05756   Test F-score avg/max: 0.59343/0.6386
+Epoch: 42/300   Train loss: 0.05706   Test F-score avg/max: 0.61237/0.6386
+Epoch: 43/300   Train loss: 0.05757   Test F-score avg/max: 0.61695/0.6386
+Epoch: 44/300   Train loss: 0.05716   Test F-score avg/max: 0.60772/0.6386
+Epoch: 45/300   Train loss: 0.05748   Test F-score avg/max: 0.61814/0.6386
+Epoch: 46/300   Train loss: 0.05721   Test F-score avg/max: 0.6085/0.6386
+Epoch: 47/300   Train loss: 0.05778   Test F-score avg/max: 0.60124/0.6386
+Epoch: 48/300   Train loss: 0.05711   Test F-score avg/max: 0.60392/0.6386
+Epoch: 49/300   Train loss: 0.05706   Test F-score avg/max: 0.60914/0.6386
+Epoch: 50/300   Train loss: 0.05726   Test F-score avg/max: 0.62434/0.6386
+Epoch: 51/300   Train loss: 0.05703   Test F-score avg/max: 0.59343/0.6386
+Epoch: 52/300   Train loss: 0.05709   Test F-score avg/max: 0.59182/0.6386
+Epoch: 53/300   Train loss: 0.05687   Test F-score avg/max: 0.62024/0.6386
+Epoch: 54/300   Train loss: 0.05672   Test F-score avg/max: 0.63494/0.6386
+Epoch: 55/300   Train loss: 0.05734   Test F-score avg/max: 0.59437/0.6386
+Epoch: 56/300   Train loss: 0.05721   Test F-score avg/max: 0.58914/0.6386
+Epoch: 57/300   Train loss: 0.05713   Test F-score avg/max: 0.64247/0.64247
+Epoch: 58/300   Train loss: 0.05698   Test F-score avg/max: 0.62205/0.64247
+Epoch: 59/300   Train loss: 0.05733   Test F-score avg/max: 0.59549/0.64247
+Epoch: 60/300   Train loss: 0.05722   Test F-score avg/max: 0.62508/0.64247
+Epoch: 61/300   Train loss: 0.05743   Test F-score avg/max: 0.59505/0.64247
+Epoch: 62/300   Train loss: 0.05726   Test F-score avg/max: 0.60679/0.64247
+Epoch: 63/300   Train loss: 0.05703   Test F-score avg/max: 0.59928/0.64247
+Epoch: 64/300   Train loss: 0.05752   Test F-score avg/max: 0.61974/0.64247
+Epoch: 65/300   Train loss: 0.05729   Test F-score avg/max: 0.61218/0.64247

@@ -637,3 +637,417 @@ WARNING:root:NaN or Inf found in input tensor.
 WARNING:root:NaN or Inf found in input tensor.
 WARNING:root:NaN or Inf found in input tensor.
 WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+Epoch: 264/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 265/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 266/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 267/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 268/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 269/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 270/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 271/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 272/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 273/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 274/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 275/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 276/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 277/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 278/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 279/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 280/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 281/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 282/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 283/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 284/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 285/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 286/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 287/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 288/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 289/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 290/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 291/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 292/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 293/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 294/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 295/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 296/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 297/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 298/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Epoch: 299/300   Train loss: nan   Test F-score avg/max: 0.035038/0.035038
+Split: splits/tvsum_splits.json   Best F-score: 0.03504   Model: i3d_features/models/tvsum_splits_0_0.035037792775188446.tar.pth
+Setting CUDA device:  0
+['../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5']
+../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Loading: ../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Loading splits from:  splits/tvsum_splits.json
+Selecting split:  1
+tvsum
+../SUM-GAN-AAE/data/SumMe/summe_i3d_mixed5c_aligned.h5
+../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Initializing VASNet model and optimizer...
+Starting training...
+Epoch: 0/300    Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 1/300    Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 2/300    Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 3/300    Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 4/300    Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 5/300    Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 6/300    Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 7/300    Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 8/300    Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 9/300    Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 10/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 11/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 12/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 13/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 14/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 15/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 16/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 17/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 18/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 19/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 20/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 21/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 22/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 23/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 24/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 25/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 26/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 27/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 28/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 29/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 30/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 31/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 32/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 33/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 34/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 35/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 36/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 37/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 38/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 39/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 40/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 41/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 42/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 43/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 44/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 45/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 46/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 47/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 48/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 49/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 50/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 51/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 52/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 53/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 54/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 55/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 56/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 57/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 58/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 59/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 60/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 61/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 62/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 63/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 64/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 65/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 66/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 67/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 68/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+Epoch: 69/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 70/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 71/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 72/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 73/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 74/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 75/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 76/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 77/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 78/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 79/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 80/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 81/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 82/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 83/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 84/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 85/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 86/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 87/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 88/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 89/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 90/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 91/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 92/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 93/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 94/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 95/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 96/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 97/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 98/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 99/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 100/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 101/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 102/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 103/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 104/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 105/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 106/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 107/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 108/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 109/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 110/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 111/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 112/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 113/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 114/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 115/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 116/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 117/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 118/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 119/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 120/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 121/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 122/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 123/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 124/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 125/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 126/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 127/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 128/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 129/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 130/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 131/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 132/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 133/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 134/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 135/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 136/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 137/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 138/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 139/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 140/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 141/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 142/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 143/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 144/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 145/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 146/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 147/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 148/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 149/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 150/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 151/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 152/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 153/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 154/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 155/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 156/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 157/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 158/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 159/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 160/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 161/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 162/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 163/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 164/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 165/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 166/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 167/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 168/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 169/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 170/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 171/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 172/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 173/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 174/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 175/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 176/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 177/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 178/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 179/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 180/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+Epoch: 181/300   Train loss: nan   Test F-score avg/max: 0.02655/0.02655
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.

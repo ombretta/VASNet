@@ -8,4 +8,4 @@
 #SBATCH --gres=gpu:1
 module use /opt/insy/modulefiles
 module load cuda/10.0 cudnn/10.0-7.6.0.64
-srun python main.py --train  --datasets datasets/datasets_list.txt --output-dir=i3d_features --lr=0.005 --l2_req=1e-05
+srun python main.py --train  --datasets datasets/datasets_list.txt --output-dir=i3d_features_lr0.005_l2req1e-05 --lr=0.005 --l2_req=1e-05

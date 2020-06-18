@@ -1,0 +1,156 @@
+Packages & system versions:
+----------------------------------------------------------------------
+display :  	NVRM version: NVIDIA UNIX x86_64 Kernel Module  450.36.06  Mon Jun  1 23:19:54 UTC 2020
+	GCC version:  gcc version 4.8.5 20150623 (Red Hat 4.8.5-39) (GCC)
+cuda :  NA
+cudnn :  7605
+platform :  Linux-3.10.0-1127.8.2.el7.x86_64-x86_64-with-glibc2.10
+python :  (3, 8, 2)
+torch :  1.5.0
+numpy :  1.18.1
+h5py :  2.10.0
+json :  2.0.9
+ortools :  7.6.7691
+torchvision :  0.6.0a0+82fd1c8
+
+root
+datasets
+splits
+train
+verbose
+output_dir
+l2_req
+lr_epochs
+lr
+Parameters:
+----------------------------------------------------------------------
+[0] cuda_device: 0
+[1] datasets: ['../SUM-GAN-AAE/data/SumMe/summe_i3d_mixed5c_aligned.h5', '../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5']
+[2] epochs_max: 300
+[3] l2_req: 0.001
+[4] lr: [0.0005]
+[5] lr_epochs: [0]
+[6] max_summary_length: 0.15
+[7] output_dir: i3d_features_lr0.0005_l2req0.001
+[8] root: 
+[9] splits: ['splits/tvsum_splits.json', 'splits/summe_splits.json', 'splits/tvsum_aug_splits.json', 'splits/summe_aug_splits.json']
+[10] train: True
+[11] train_batch_size: 1
+[12] use_cuda: True
+[13] verbose: False
+
+tvsum  [{'test_keys': ['video_10', 'video_20', 'video_23', 'video_29', 'video_3', 'video_32', 'video_33', 'video_35', 'video_37', 'video_41'], 'train_keys': ['video_1', 'video_11', 'video_12', 'video_13', 'video_14', 'video_15', 'video_16', 'video_17', 'video_18', 'video_19', 'video_2', 'video_21', 'video_22', 'video_24', 'video_25', 'video_26', 'video_27', 'video_28', 'video_30', 'video_31', 'video_34', 'video_36', 'video_38', 'video_39', 'video_4', 'video_40', 'video_42', 'video_43', 'video_44', 'video_45', 'video_46', 'video_47', 'video_48', 'video_49', 'video_5', 'video_50', 'video_6', 'video_7', 'video_8', 'video_9']}, {'test_keys': ['video_14', 'video_29', 'video_35', 'video_36', 'video_38', 'video_41', 'video_45', 'video_46', 'video_5', 'video_6'], 'train_keys': ['video_1', 'video_10', 'video_11', 'video_12', 'video_13', 'video_15', 'video_16', 'video_17', 'video_18', 'video_19', 'video_2', 'video_20', 'video_21', 'video_22', 'video_23', 'video_24', 'video_25', 'video_26', 'video_27', 'video_28', 'video_3', 'video_30', 'video_31', 'video_32', 'video_33', 'video_34', 'video_37', 'video_39', 'video_4', 'video_40', 'video_42', 'video_43', 'video_44', 'video_47', 'video_48', 'video_49', 'video_50', 'video_7', 'video_8', 'video_9']}, {'test_keys': ['video_11', 'video_12', 'video_13', 'video_14', 'video_19', 'video_20', 'video_25', 'video_27', 'video_35', 'video_48'], 'train_keys': ['video_1', 'video_10', 'video_15', 'video_16', 'video_17', 'video_18', 'video_2', 'video_21', 'video_22', 'video_23', 'video_24', 'video_26', 'video_28', 'video_29', 'video_3', 'video_30', 'video_31', 'video_32', 'video_33', 'video_34', 'video_36', 'video_37', 'video_38', 'video_39', 'video_4', 'video_40', 'video_41', 'video_42', 'video_43', 'video_44', 'video_45', 'video_46', 'video_47', 'video_49', 'video_5', 'video_50', 'video_6', 'video_7', 'video_8', 'video_9']}, {'test_keys': ['video_25', 'video_31', 'video_33', 'video_35', 'video_39', 'video_4', 'video_45', 'video_49', 'video_5', 'video_7'], 'train_keys': ['video_1', 'video_10', 'video_11', 'video_12', 'video_13', 'video_14', 'video_15', 'video_16', 'video_17', 'video_18', 'video_19', 'video_2', 'video_20', 'video_21', 'video_22', 'video_23', 'video_24', 'video_26', 'video_27', 'video_28', 'video_29', 'video_3', 'video_30', 'video_32', 'video_34', 'video_36', 'video_37', 'video_38', 'video_40', 'video_41', 'video_42', 'video_43', 'video_44', 'video_46', 'video_47', 'video_48', 'video_50', 'video_6', 'video_8', 'video_9']}, {'test_keys': ['video_10', 'video_14', 'video_17', 'video_2', 'video_29', 'video_31', 'video_38', 'video_48', 'video_49', 'video_5'], 'train_keys': ['video_1', 'video_11', 'video_12', 'video_13', 'video_15', 'video_16', 'video_18', 'video_19', 'video_20', 'video_21', 'video_22', 'video_23', 'video_24', 'video_25', 'video_26', 'video_27', 'video_28', 'video_3', 'video_30', 'video_32', 'video_33', 'video_34', 'video_35', 'video_36', 'video_37', 'video_39', 'video_4', 'video_40', 'video_41', 'video_42', 'video_43', 'video_44', 'video_45', 'video_46', 'video_47', 'video_50', 'video_6', 'video_7', 'video_8', 'video_9']}]
+tvsum
+../SUM-GAN-AAE/data/SumMe/summe_i3d_mixed5c_aligned.h5
+../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Setting CUDA device:  0
+['../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5']
+../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Loading: ../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Loading splits from:  splits/tvsum_splits.json
+Selecting split:  0
+tvsum
+../SUM-GAN-AAE/data/SumMe/summe_i3d_mixed5c_aligned.h5
+../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Initializing VASNet model and optimizer...
+Starting training...
+Epoch: 0/300    Train loss: 0.18253   Test F-score avg/max: 0.035038/0.035038
+Epoch: 1/300    Train loss: 0.18277   Test F-score avg/max: 0.035038/0.035038
+Epoch: 2/300    Train loss: 0.18276   Test F-score avg/max: 0.035038/0.035038
+Epoch: 3/300    Train loss: 0.19308   Test F-score avg/max: 0.035038/0.035038
+Epoch: 4/300    Train loss: 0.18277   Test F-score avg/max: 0.035038/0.035038
+Epoch: 5/300    Train loss: 0.18277   Test F-score avg/max: 0.035038/0.035038
+Epoch: 6/300    Train loss: 0.18285   Test F-score avg/max: 0.038965/0.038965
+Epoch: 7/300    Train loss: 0.18888   Test F-score avg/max: 0.035038/0.038965
+Epoch: 8/300    Train loss: 0.18277   Test F-score avg/max: 0.035038/0.038965
+Epoch: 9/300    Train loss: 0.18277   Test F-score avg/max: 0.035038/0.038965
+Epoch: 10/300   Train loss: 0.18277   Test F-score avg/max: 0.035038/0.038965
+Epoch: 11/300   Train loss: 0.18277   Test F-score avg/max: 0.035038/0.038965
+Epoch: 12/300   Train loss: 0.18277   Test F-score avg/max: 0.035038/0.038965
+Epoch: 13/300   Train loss: 0.18277   Test F-score avg/max: 0.035038/0.038965
+Epoch: 14/300   Train loss: 0.18277   Test F-score avg/max: 0.035038/0.038965
+Epoch: 15/300   Train loss: 0.18132   Test F-score avg/max: 0.48982/0.48982
+Epoch: 16/300   Train loss: 0.09859   Test F-score avg/max: 0.60728/0.60728
+Epoch: 17/300   Train loss: 0.05966   Test F-score avg/max: 0.61584/0.61584
+Epoch: 18/300   Train loss: 0.05376   Test F-score avg/max: 0.61032/0.61584
+Epoch: 19/300   Train loss: 0.05323   Test F-score avg/max: 0.59621/0.61584
+Epoch: 20/300   Train loss: 0.05554   Test F-score avg/max: 0.59897/0.61584
+Epoch: 21/300   Train loss: 0.04959   Test F-score avg/max: 0.60786/0.61584
+Epoch: 22/300   Train loss: 0.04992   Test F-score avg/max: 0.60852/0.61584
+Epoch: 23/300   Train loss: 0.04622   Test F-score avg/max: 0.60626/0.61584
+Epoch: 24/300   Train loss: 0.04570   Test F-score avg/max: 0.60934/0.61584
+Epoch: 25/300   Train loss: 0.04346   Test F-score avg/max: 0.58909/0.61584
+Epoch: 26/300   Train loss: 0.04240   Test F-score avg/max: 0.57329/0.61584
+Epoch: 27/300   Train loss: 0.04441   Test F-score avg/max: 0.60567/0.61584
+Epoch: 28/300   Train loss: 0.04471   Test F-score avg/max: 0.55644/0.61584
+Epoch: 29/300   Train loss: 0.04232   Test F-score avg/max: 0.59222/0.61584
+Epoch: 30/300   Train loss: 0.04761   Test F-score avg/max: 0.60426/0.61584
+Epoch: 31/300   Train loss: 0.04981   Test F-score avg/max: 0.60514/0.61584
+Epoch: 32/300   Train loss: 0.04302   Test F-score avg/max: 0.59256/0.61584
+Epoch: 33/300   Train loss: 0.04149   Test F-score avg/max: 0.59128/0.61584
+Epoch: 34/300   Train loss: 0.04074   Test F-score avg/max: 0.57275/0.61584
+Epoch: 35/300   Train loss: 0.03775   Test F-score avg/max: 0.55985/0.61584
+Epoch: 36/300   Train loss: 0.03785   Test F-score avg/max: 0.57882/0.61584
+Epoch: 37/300   Train loss: 0.03514   Test F-score avg/max: 0.57415/0.61584
+Epoch: 38/300   Train loss: 0.03468   Test F-score avg/max: 0.5777/0.61584
+Epoch: 39/300   Train loss: 0.03331   Test F-score avg/max: 0.57271/0.61584
+Epoch: 40/300   Train loss: 0.03648   Test F-score avg/max: 0.59514/0.61584
+Epoch: 41/300   Train loss: 0.03419   Test F-score avg/max: 0.5889/0.61584
+Epoch: 42/300   Train loss: 0.03102   Test F-score avg/max: 0.56355/0.61584
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.
+WARNING:root:NaN or Inf found in input tensor.

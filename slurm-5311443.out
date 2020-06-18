@@ -1,0 +1,99 @@
+Packages & system versions:
+----------------------------------------------------------------------
+display :  	NVRM version: NVIDIA UNIX x86_64 Kernel Module  450.36.06  Mon Jun  1 23:19:54 UTC 2020
+	GCC version:  gcc version 4.8.5 20150623 (Red Hat 4.8.5-39) (GCC)
+cuda :  NA
+cudnn :  7605
+platform :  Linux-3.10.0-1127.8.2.el7.x86_64-x86_64-with-glibc2.10
+python :  (3, 8, 2)
+torch :  1.5.0
+numpy :  1.18.1
+h5py :  2.10.0
+json :  2.0.9
+ortools :  7.6.7691
+torchvision :  0.6.0a0+82fd1c8
+
+root
+datasets
+splits
+train
+verbose
+output_dir
+l2_req
+lr_epochs
+lr
+Parameters:
+----------------------------------------------------------------------
+[0] cuda_device: 0
+[1] datasets: ['../SUM-GAN-AAE/data/SumMe/summe_i3d_mixed5c_aligned.h5', '../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5']
+[2] epochs_max: 300
+[3] l2_req: 0.001
+[4] lr: [5e-05]
+[5] lr_epochs: [0]
+[6] max_summary_length: 0.15
+[7] output_dir: i3d_features_lr5e-05_l2req0.001
+[8] root: 
+[9] splits: ['splits/tvsum_splits.json', 'splits/summe_splits.json', 'splits/tvsum_aug_splits.json', 'splits/summe_aug_splits.json']
+[10] train: True
+[11] train_batch_size: 1
+[12] use_cuda: True
+[13] verbose: False
+
+tvsum  [{'test_keys': ['video_10', 'video_20', 'video_23', 'video_29', 'video_3', 'video_32', 'video_33', 'video_35', 'video_37', 'video_41'], 'train_keys': ['video_1', 'video_11', 'video_12', 'video_13', 'video_14', 'video_15', 'video_16', 'video_17', 'video_18', 'video_19', 'video_2', 'video_21', 'video_22', 'video_24', 'video_25', 'video_26', 'video_27', 'video_28', 'video_30', 'video_31', 'video_34', 'video_36', 'video_38', 'video_39', 'video_4', 'video_40', 'video_42', 'video_43', 'video_44', 'video_45', 'video_46', 'video_47', 'video_48', 'video_49', 'video_5', 'video_50', 'video_6', 'video_7', 'video_8', 'video_9']}, {'test_keys': ['video_14', 'video_29', 'video_35', 'video_36', 'video_38', 'video_41', 'video_45', 'video_46', 'video_5', 'video_6'], 'train_keys': ['video_1', 'video_10', 'video_11', 'video_12', 'video_13', 'video_15', 'video_16', 'video_17', 'video_18', 'video_19', 'video_2', 'video_20', 'video_21', 'video_22', 'video_23', 'video_24', 'video_25', 'video_26', 'video_27', 'video_28', 'video_3', 'video_30', 'video_31', 'video_32', 'video_33', 'video_34', 'video_37', 'video_39', 'video_4', 'video_40', 'video_42', 'video_43', 'video_44', 'video_47', 'video_48', 'video_49', 'video_50', 'video_7', 'video_8', 'video_9']}, {'test_keys': ['video_11', 'video_12', 'video_13', 'video_14', 'video_19', 'video_20', 'video_25', 'video_27', 'video_35', 'video_48'], 'train_keys': ['video_1', 'video_10', 'video_15', 'video_16', 'video_17', 'video_18', 'video_2', 'video_21', 'video_22', 'video_23', 'video_24', 'video_26', 'video_28', 'video_29', 'video_3', 'video_30', 'video_31', 'video_32', 'video_33', 'video_34', 'video_36', 'video_37', 'video_38', 'video_39', 'video_4', 'video_40', 'video_41', 'video_42', 'video_43', 'video_44', 'video_45', 'video_46', 'video_47', 'video_49', 'video_5', 'video_50', 'video_6', 'video_7', 'video_8', 'video_9']}, {'test_keys': ['video_25', 'video_31', 'video_33', 'video_35', 'video_39', 'video_4', 'video_45', 'video_49', 'video_5', 'video_7'], 'train_keys': ['video_1', 'video_10', 'video_11', 'video_12', 'video_13', 'video_14', 'video_15', 'video_16', 'video_17', 'video_18', 'video_19', 'video_2', 'video_20', 'video_21', 'video_22', 'video_23', 'video_24', 'video_26', 'video_27', 'video_28', 'video_29', 'video_3', 'video_30', 'video_32', 'video_34', 'video_36', 'video_37', 'video_38', 'video_40', 'video_41', 'video_42', 'video_43', 'video_44', 'video_46', 'video_47', 'video_48', 'video_50', 'video_6', 'video_8', 'video_9']}, {'test_keys': ['video_10', 'video_14', 'video_17', 'video_2', 'video_29', 'video_31', 'video_38', 'video_48', 'video_49', 'video_5'], 'train_keys': ['video_1', 'video_11', 'video_12', 'video_13', 'video_15', 'video_16', 'video_18', 'video_19', 'video_20', 'video_21', 'video_22', 'video_23', 'video_24', 'video_25', 'video_26', 'video_27', 'video_28', 'video_3', 'video_30', 'video_32', 'video_33', 'video_34', 'video_35', 'video_36', 'video_37', 'video_39', 'video_4', 'video_40', 'video_41', 'video_42', 'video_43', 'video_44', 'video_45', 'video_46', 'video_47', 'video_50', 'video_6', 'video_7', 'video_8', 'video_9']}]
+tvsum
+../SUM-GAN-AAE/data/SumMe/summe_i3d_mixed5c_aligned.h5
+../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Setting CUDA device:  0
+['../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5']
+../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Loading: ../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Loading splits from:  splits/tvsum_splits.json
+Selecting split:  0
+tvsum
+../SUM-GAN-AAE/data/SumMe/summe_i3d_mixed5c_aligned.h5
+../SUM-GAN-AAE/data/TVSum/tvsum_i3d_mixed5c_aligned.h5
+Initializing VASNet model and optimizer...
+Starting training...
+Epoch: 0/300    Train loss: 0.13318   Test F-score avg/max: 0.48716/0.48716
+Epoch: 1/300    Train loss: 0.11551   Test F-score avg/max: 0.50554/0.50554
+Epoch: 2/300    Train loss: 0.09866   Test F-score avg/max: 0.52791/0.52791
+Epoch: 3/300    Train loss: 0.08744   Test F-score avg/max: 0.55887/0.55887
+Epoch: 4/300    Train loss: 0.08049   Test F-score avg/max: 0.57246/0.57246
+Epoch: 5/300    Train loss: 0.07164   Test F-score avg/max: 0.58572/0.58572
+Epoch: 6/300    Train loss: 0.06621   Test F-score avg/max: 0.59496/0.59496
+Epoch: 7/300    Train loss: 0.06289   Test F-score avg/max: 0.6033/0.6033
+Epoch: 8/300    Train loss: 0.06054   Test F-score avg/max: 0.59278/0.6033
+Epoch: 9/300    Train loss: 0.05858   Test F-score avg/max: 0.60571/0.60571
+Epoch: 10/300   Train loss: 0.05660   Test F-score avg/max: 0.59946/0.60571
+Epoch: 11/300   Train loss: 0.05519   Test F-score avg/max: 0.60028/0.60571
+Epoch: 12/300   Train loss: 0.05398   Test F-score avg/max: 0.60024/0.60571
+Epoch: 13/300   Train loss: 0.05357   Test F-score avg/max: 0.60034/0.60571
+Epoch: 14/300   Train loss: 0.05218   Test F-score avg/max: 0.60566/0.60571
+Epoch: 15/300   Train loss: 0.05101   Test F-score avg/max: 0.59561/0.60571
+Epoch: 16/300   Train loss: 0.05034   Test F-score avg/max: 0.60157/0.60571
+Epoch: 17/300   Train loss: 0.05038   Test F-score avg/max: 0.59875/0.60571
+Epoch: 18/300   Train loss: 0.04873   Test F-score avg/max: 0.59808/0.60571
+Epoch: 19/300   Train loss: 0.04808   Test F-score avg/max: 0.59563/0.60571
+Epoch: 20/300   Train loss: 0.04813   Test F-score avg/max: 0.59992/0.60571
+Epoch: 21/300   Train loss: 0.04715   Test F-score avg/max: 0.61242/0.61242
+Epoch: 22/300   Train loss: 0.04670   Test F-score avg/max: 0.60962/0.61242
+Epoch: 23/300   Train loss: 0.04611   Test F-score avg/max: 0.61251/0.61251
+Epoch: 24/300   Train loss: 0.04635   Test F-score avg/max: 0.60594/0.61251
+Epoch: 25/300   Train loss: 0.04559   Test F-score avg/max: 0.60567/0.61251
+Epoch: 26/300   Train loss: 0.04543   Test F-score avg/max: 0.60983/0.61251
+Epoch: 27/300   Train loss: 0.04486   Test F-score avg/max: 0.60867/0.61251
+Epoch: 28/300   Train loss: 0.04477   Test F-score avg/max: 0.60543/0.61251
+Epoch: 29/300   Train loss: 0.04473   Test F-score avg/max: 0.60224/0.61251
+Epoch: 30/300   Train loss: 0.04401   Test F-score avg/max: 0.60613/0.61251
+Epoch: 31/300   Train loss: 0.04362   Test F-score avg/max: 0.60677/0.61251
+Epoch: 32/300   Train loss: 0.04336   Test F-score avg/max: 0.60951/0.61251
+Epoch: 33/300   Train loss: 0.04276   Test F-score avg/max: 0.60784/0.61251
+Epoch: 34/300   Train loss: 0.04291   Test F-score avg/max: 0.60577/0.61251
+Epoch: 35/300   Train loss: 0.04281   Test F-score avg/max: 0.60703/0.61251
+Epoch: 36/300   Train loss: 0.04184   Test F-score avg/max: 0.59581/0.61251
+Epoch: 37/300   Train loss: 0.04230   Test F-score avg/max: 0.59928/0.61251
+Epoch: 38/300   Train loss: 0.04157   Test F-score avg/max: 0.60805/0.61251
+Epoch: 39/300   Train loss: 0.04127   Test F-score avg/max: 0.61927/0.61927
+Epoch: 40/300   Train loss: 0.04052   Test F-score avg/max: 0.60639/0.61927
+Epoch: 41/300   Train loss: 0.04020   Test F-score avg/max: 0.60676/0.61927
+Epoch: 42/300   Train loss: 0.04029   Test F-score avg/max: 0.61086/0.61927
