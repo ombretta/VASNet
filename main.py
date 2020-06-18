@@ -209,7 +209,6 @@ class AONet:
 
     def train(self, output_dir='EX-0'):
         
-        print(self.hps.lr[0])
         writer = SummaryWriter(log_dir="./"+output_dir+"/runs/lr"+str(self.hps.lr[0])+"_wd"+str(self.hps.l2_req))
 
         print("Initializing VASNet model and optimizer...")
