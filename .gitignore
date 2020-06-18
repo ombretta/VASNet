@@ -4,7 +4,7 @@ splits/
 i3d_features/
 google_features/
 output_dir/
-*.outÃ
+*.out
 i3d_features--lr=5e-05--l2_req=1e-05/
 i3d_features_lr5e-05_l2req1e-05/
 i3d_features_lr5e-05_l2req0.0001/
