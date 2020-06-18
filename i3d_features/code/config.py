@@ -54,6 +54,7 @@ class HParameters:
 
     def load_from_args(self, args):
         for key in args:
+            print(key)
             val = args[key]
             if val is not None:
                 if hasattr(self, key) and isinstance(getattr(self, key), list):
@@ -61,7 +62,7 @@ class HParameters:
 
                 setattr(self, key, val)
             
-            if key == "datasets" and ".txt" in args["datasets"]: 
+            if key == "datasets" and args["datasets"] is not None and ".txt" in args["datasets"]: 
                 with open(args["datasets"], "r") as f:
                     self.datasets = f.read().split("\n")
                     if "" in self.datasets: self.datasets.remove("") #CHANGED HERE
