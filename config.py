@@ -56,7 +56,7 @@ class HParameters:
         for key in args:
             print(key)
             val = args[key]
-            if val is not None:
+            if val is not None and key != "lr" and key != "lr_epochs":
                 if hasattr(self, key) and isinstance(getattr(self, key), list):
                     val = val.split()
 
