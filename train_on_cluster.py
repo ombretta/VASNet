@@ -19,10 +19,17 @@ if features_type == "i3d":
     
     text += " --datasets datasets/datasets_list.txt --output-dir=i3d_features"
 else: text += " --output-dir=google_features"
+
+learning_rate = [0.005, 0.0005, 0.00005]
+weight_decay = [0.001, 0.0001, 0.00001]
+
+for lr in learning_rate:
+    for l2_req in weight_decay:
+        full_text = text + "--lr=" + str(lr) + "--l2_req=" + str(l2_req)
             
 filename = "VASNet_" + features_type + ".sbatch"
 
 with open(filename, "w") as file:
-    file.write(text)
+    file.write(full_text)
 
 os.system("sbatch " + filename)

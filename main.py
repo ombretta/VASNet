@@ -209,7 +209,7 @@ class AONet:
 
     def train(self, output_dir='EX-0'):
         
-        writer = SummaryWriter(log_dir="./"+output_dir+"/runs/")
+        writer = SummaryWriter(log_dir="./"+output_dir+"/runs/lr"+str(self.self.hps.lr[0])+"_wd"+str(self.self.hps.l2_req[0]))
 
         print("Initializing VASNet model and optimizer...")
         self.model.train()
@@ -228,7 +228,6 @@ class AONet:
         max_val_fscore_epoch = 0
         train_keys = self.train_keys[:]
 
-        lr = self.hps.lr[0]
         for epoch in range(self.hps.epochs_max):
 
             print("Epoch: {0:6}".format(str(epoch)+"/"+str(self.hps.epochs_max)), end='')
@@ -480,7 +479,11 @@ if __name__ == "__main__":
     parser.add_argument('-s', '--splits', type=str, help="Comma separated list of split files.")
     parser.add_argument('-t', '--train', action='store_true', help="Train")
     parser.add_argument('-v', '--verbose', action='store_true', help="Prints out more messages")
-    parser.add_argument('-o', '--output-dir', type=str, default='data', help="Experiment name")
+    parser.add_argument('-o', '--output-dir', type=str, default='data', help="Experiment name") 
+    parser.add_argument('--l2_req', type=float, default=0.00001, help="Weight_decay") 
+    parser.add_argument('--lr_epochs', type=int, default=0, help="") 
+    parser.add_argument('--lr', type=float, default=0.00005, help="Learning rate") 
+        
     args = parser.parse_args()
 
     # MAIN

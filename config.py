@@ -17,7 +17,7 @@ class HParameters:
         self.max_summary_length = 0.15
 
         self.l2_req = 0.00001
-        self.lr_epochs = [0]
+        self.lr_epochs = [0] # Looks like this is never used
         self.lr = [0.00005]
 
         self.epochs_max = 300
@@ -66,6 +66,9 @@ class HParameters:
                 with open(args["datasets"], "r") as f:
                     self.datasets = f.read().split("\n")
                     if "" in self.datasets: self.datasets.remove("") #CHANGED HERE
+            
+            if key == "lr" and args["lr"] is not None: self.lr = [args["lr"]]
+            if key == "lr_epochs" and args["lr_epochs"] is not None: self.lr_epochs = [args["lr_epochs"]]
 
     def __str__(self):
         vars = [attr for attr in dir(self) if not callable(getattr(self,attr)) and not (attr.startswith("__") or attr.startswith("_"))]
