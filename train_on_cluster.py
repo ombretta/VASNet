@@ -11,7 +11,10 @@ text = "#!/bin/sh\n\
 #SBATCH --gres=gpu:1\n\
 module use /opt/insy/modulefiles\n\
 module load cuda/10.0 cudnn/10.0-7.6.0.64\n\
-srun python main.py --train "
+srun python main.py "
+
+train = False
+if train: text += "--train "
 
 features_type = "i3d" #"google"
 
