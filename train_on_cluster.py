@@ -25,7 +25,9 @@ weight_decay = [0.001, 0.0001, 0.00001]
 
 for lr in learning_rate:
     for l2_req in weight_decay:
-        full_text = text + "--lr=" + str(lr) + "--l2_req=" + str(l2_req)
+        
+        name_extension = "_lr" + str(lr) + "_l2req" + str(l2_req)
+        full_text = text + name_extension + " --lr=" + str(lr) + " --l2_req=" + str(l2_req)
             
         filename = "VASNet_" + features_type + "_lr" + str(lr) + "_l2req" + str(l2_req) +".sbatch"
         
