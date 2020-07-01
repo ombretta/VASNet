@@ -4,7 +4,7 @@ import math
 text = "#!/bin/sh\n\
 #SBATCH --partition=general\n\
 #SBATCH --qos=short\n\
-#SBATCH --time=1:30:00\n\
+#SBATCH --time=2:30:00\n\
 #SBATCH --ntasks=1\n\
 #SBATCH --cpus-per-task=2\n\
 #SBATCH --mem=2000\n\
@@ -13,7 +13,7 @@ module use /opt/insy/modulefiles\n\
 module load cuda/10.0 cudnn/10.0-7.6.0.64\n\
 srun python main.py "
 
-train = False
+train = True
 if train: text += "--train "
 
 features_type = "i3d" #"google"
@@ -23,9 +23,9 @@ if features_type == "i3d":
     text += " --datasets datasets/datasets_list.txt --output-dir=i3d_features"
 else: text += " --output-dir=google_features"
 
-learning_rate = [0.005, 0.0005, 0.00005]
-weight_decay = [0.001, 0.0001, 0.00001]
-epochs_max = 50
+learning_rate = [0.00005] #[0.005, 0.0005, 0.00005]
+weight_decay = [0.1, 0.01] #[0.001, 0.0001, 0.00001, 0.000001]
+epochs_max = 300
 
 for lr in learning_rate:
     for l2_req in weight_decay:
