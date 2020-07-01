@@ -13,14 +13,17 @@ module use /opt/insy/modulefiles\n\
 module load cuda/10.0 cudnn/10.0-7.6.0.64\n\
 srun python main.py "
 
-train = False
+train = True
 if train: text += "--train "
 
 features_type = "i3d" #"google"
 
+ten_seconds_features = True
 if features_type == "i3d":
-    
-    text += " --datasets datasets/datasets_list.txt --output-dir=i3d_features"
+    if ten_seconds_features:
+        text += " --datasets datasets/datasets_list2.txt --output-dir=i3d_features_10s"
+    else:
+        text += " --datasets datasets/datasets_list.txt --output-dir=i3d_features"
 else: text += " --output-dir=google_features"
 
 learning_rate = [0.005, 0.0005, 0.00005]
