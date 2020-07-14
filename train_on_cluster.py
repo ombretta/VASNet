@@ -33,19 +33,22 @@ else: text += " --output-dir=google_features"
 learning_rate = [0.00005, 0.005, 0.0005, 0.00005]
 weight_decay = [0.01, 0.001, 0.0001, 0.000001] #[0.001, 0.0001, 0.00001, 0.000001]
 epochs_max = 300
+coeffs = [0.1, 0.2, 0.3, 0.4, 0.5] # coeff for the stochastic regularization term
 
 for lr in learning_rate:
     for l2_req in weight_decay:
+        for coeff in coeffs:
         
-        name_extension = "_lr" + str(lr) + "_l2req" + str(l2_req)
-        full_text = text + name_extension + " --lr=" + str(lr) + \
-            " --l2_req=" + str(l2_req) + " --epochs_max=" + str(epochs_max)
+            name_extension = "_lr" + str(lr) + "_l2req" + str(l2_req) + "_regcoeff" + str(coeff)
+            full_text = text + name_extension + " --lr=" + str(lr) + \
+                " --l2_req=" + str(l2_req) + " --epochs_max=" + str(epochs_max) + \
+                " --coeff=" + str(coeff)
+                
+            filename = "VASNet_" + features_type + "_lr" + str(lr) + "_l2req" + str(l2_req) + "_regcoeff" + str(coeff) + ".sbatch"
             
-        filename = "VASNet_" + features_type + "_lr" + str(lr) + "_l2req" + str(l2_req) +".sbatch"
-        
-        print(full_text)
- 
-        with open(filename, "w") as file:
-            file.write(full_text)
-        
-        os.system("sbatch " + filename)
+            print(full_text)
+     
+            with open(filename, "w") as file:
+                file.write(full_text)
+            
+            os.system("sbatch " + filename)
