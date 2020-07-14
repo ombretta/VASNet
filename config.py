@@ -38,8 +38,9 @@ class HParameters:
         self.splits = ['splits/tvsum_splits.json',
                         'splits/summe_splits.json']
 
-        self.splits += ['splits/tvsum_aug_splits.json',
-                        'splits/summe_aug_splits.json']
+        # Removed data augmentation, useless with i3d features
+        # self.splits += ['splits/tvsum_aug_splits.json',
+        #                 'splits/summe_aug_splits.json']
 
         return
 
