@@ -243,18 +243,25 @@ class AONet:
                 target = dataset['gtscore'][...]
                 target = torch.from_numpy(target).unsqueeze(0)
 
-                # Normalize frame scores
+                # Normalize frame scores: target between 0 and 1
                 target -= target.min()
                 target /= target.max()
-
+                
                 if self.hps.use_cuda:
                     seq, target = seq.float().cuda(), target.float().cuda()
 
                 seq_len = seq.shape[1]
                 y, _ = self.model(seq,seq_len)
+                
+                # Added stochastic loss
+                m = torch.distributions.bernoulli.Bernoulli(probs=0.5)
+                theta = self.hps.coeff*m.sample()
+                stochastic_y = y + theta
+                
                 loss_att = 0
-
-                loss = criterion(y, target)
+                
+                # Add regularization: y'
+                loss = criterion(stochastic_y, target)
                 # loss2 = y.sum()/seq_len
                 loss = loss + loss_att
                 self.optimizer.zero_grad()
@@ -484,6 +491,7 @@ if __name__ == "__main__":
     parser.add_argument('--lr_epochs', type=int, default=0, help="") 
     parser.add_argument('--lr', type=float, default=0.00005, help="Learning rate") 
     parser.add_argument('--epochs_max', type=int, default=300, help="Maximum number of epochs") 
+    parser.add_argument('--coeff', type=float, default=0.0, help="Coefficient for Seyran's stochastic regularization term") 
         
     args = parser.parse_args()
 
