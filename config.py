@@ -19,6 +19,7 @@ class HParameters:
         self.l2_req = 0.00001
         self.lr_epochs = [0] # Looks like this is never used
         self.lr = [0.00005]
+        self.coeff = 0 # Coefficient for the stochastic regulatization term
 
         self.epochs_max = 300
         self.train_batch_size = 1
@@ -38,8 +39,9 @@ class HParameters:
         self.splits = ['splits/tvsum_splits.json',
                         'splits/summe_splits.json']
 
-        self.splits += ['splits/tvsum_aug_splits.json',
-                        'splits/summe_aug_splits.json']
+        # Removed data augmentation, useless with i3d features
+        # self.splits += ['splits/tvsum_aug_splits.json',
+        #                 'splits/summe_aug_splits.json']
 
         return
 

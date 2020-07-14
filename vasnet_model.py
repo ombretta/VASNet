@@ -83,6 +83,10 @@ class VASNet(nn.Module):
         self.softmax = nn.Softmax(dim=0)
         self.layer_norm_y = LayerNorm(self.m)
         self.layer_norm_ka = LayerNorm(self.ka.out_features)
+        
+        # Added standard torch batchnorm
+        self.batch_norm_y = torch.nn.BatchNorm1d(self.m)
+        self.batch_norm_ka = torch.nn.BatchNorm1d(self.ka.out_features)
 
 
     def forward(self, x, seq_len):
@@ -97,6 +101,7 @@ class VASNet(nn.Module):
         y = y + x
         y = self.drop50(y)
         y = self.layer_norm_y(y)
+        y = self.batch_norm_y(y) # added bn
 
         # Frame level importance score regression
         # Two layer NN
@@ -104,6 +109,7 @@ class VASNet(nn.Module):
         y = self.relu(y)
         y = self.drop50(y)
         y = self.layer_norm_ka(y)
+        y = self.batch_norm_ka(y)
 
         y = self.kd(y)
         y = self.sig(y)
