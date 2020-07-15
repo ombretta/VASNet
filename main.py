@@ -107,7 +107,7 @@ class AONet:
         if datasets is None:
             datasets = self.hps.datasets
         
-        print(datasets)
+        # print(datasets)
         # if ".txt" in datasets[0]: 
         #     with open(datasets[0], "r") as f:
         #         datasets = f.read().split("\n")
@@ -115,7 +115,7 @@ class AONet:
 
         datasets_dict = {}
         for dataset in datasets:
-            print(dataset)
+            # print(dataset)
             _, base_filename = os.path.split(dataset)
             base_filename, _ = os.path.splitext(base_filename)
             print("Loading:", dataset)

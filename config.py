@@ -48,17 +48,17 @@ class HParameters:
 
     def get_dataset_by_name(self, dataset_name):
 
-        print(dataset_name)
+        # print(dataset_name)
         for d in self.datasets:
             
-            print(d)
+            # print(d)
             if dataset_name in d:
                 return [d]
         return None
 
     def load_from_args(self, args):
         for key in args:
-            print(key)
+            # print(key)
             val = args[key]
             if val is not None and key != "lr" and key != "lr_epochs":
                 if hasattr(self, key) and isinstance(getattr(self, key), list):
