@@ -16,4 +16,5 @@ i3d_features_lr0.0005_l2req0.001/
 i3d_features_lr0.005_l2req1e-05/
 i3d_features_lr0.005_l2req0.0001/
 i3d_features_*
+google_features_*
 i3dvsgoogle_fscore_validation.svg

@@ -397,6 +397,10 @@ def eval_split(hps, splits_filename, data_dir='test'):
     ao.load_split_file(splits_filename)
 
     val_fscores = []
+    
+    # Create a file to collect results from all splits
+    f = open(hps.output_dir + '/test_results.txt', 'wt')
+    
     for split_id in range(len(ao.splits)):
         ao.select_split(split_id)
         weights_filename, _ = ao.lookup_weights_file(data_dir)
@@ -413,8 +417,16 @@ def eval_split(hps, splits_filename, data_dir='test'):
 
         print("Avg F-score: ", val_fscore)
         print("")
-
+        
+        # Log F-score for this split_id
+        f.write(splits_filename + ', ' + str(split_id) + ', ' + str(val_fscore) + '%\n')
+        f.flush()
+    
     print("Total AVG F-score: ", val_fscore_avg)
+    f.write(splits_filename + "Total AVG F-score: " + str(val_fscore_avg) + '%\n')
+    f.flush()
+    
+    f.close()
     return val_fscore_avg
 
 
