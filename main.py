@@ -388,7 +388,7 @@ class AONet:
 
 
 
-def eval_split(hps, splits_filename, data_dir='test'):
+def eval_split(hps, splits_filename, output_file, data_dir='test'):
 
     print("\n")
     ao = AONet(hps)
@@ -397,9 +397,6 @@ def eval_split(hps, splits_filename, data_dir='test'):
     ao.load_split_file(splits_filename)
 
     val_fscores = []
-    
-    # Create a file to collect results from all splits
-    f = open(hps.output_dir + '/test_results.txt', 'wt')
     
     for split_id in range(len(ao.splits)):
         ao.select_split(split_id)
@@ -419,14 +416,13 @@ def eval_split(hps, splits_filename, data_dir='test'):
         print("")
         
         # Log F-score for this split_id
-        f.write(splits_filename + ', ' + str(split_id) + ', ' + str(val_fscore) + '%\n')
-        f.flush()
+        output_file.write(splits_filename + ', ' + str(split_id) + ', ' + str(val_fscore) + '%\n')
+        output_file.flush()
     
     print("Total AVG F-score: ", val_fscore_avg)
-    f.write(splits_filename + "Total AVG F-score: " + str(val_fscore_avg) + '%\n')
-    f.flush()
-    
-    f.close()
+    output_file.write(splits_filename + "Total AVG F-score: " + str(val_fscore_avg) + '%\n')
+    output_file.flush()
+
     return val_fscore_avg
 
 
@@ -520,13 +516,18 @@ if __name__ == "__main__":
         train(hps)
     else:
         results=[['No', 'Split', 'Mean F-score']]
+    
+        # Create a file to collect results from all splits
+        output_file = open(hps.output_dir + '/test_results.txt', 'wt')
+    
         for i, split_filename in enumerate(hps.splits):
-            f_score = eval_split(hps, split_filename, data_dir=hps.output_dir)
+            f_score = eval_split(hps, split_filename, output_file, data_dir=hps.output_dir)
             results.append([i+1, split_filename, str(round(f_score * 100.0, 3))+"%"])
-
+        
+        output_file.close()
+        
         print("\nFinal Results:")
         print_table(results)
-
-
+        
     sys.exit(0)
 
