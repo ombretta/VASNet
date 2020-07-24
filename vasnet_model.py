@@ -6,7 +6,6 @@ __date__ = "1/12/2018"
 __license__= "MIT License"
 
 import math
-import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -24,20 +23,20 @@ class i3d_SelfAttention(nn.Module):
         super(i3d_SelfAttention, self).__init__()
 
         self.i3d_input_interval = i3d_input_interval
-        self.I3D = I3D(num_classes=1)
+        self.I3D = I3D(num_classes=400)
         self.VASNet = VASNet()
 
     def forward(self, x, seq_len):
 
         timesteps = x.shape[0]
-        all_features = np.zeros([math.ceil(timesteps/8), 1024])
+        all_features = torch.zeros([math.ceil(timesteps/8), 1024])
         i = 0
         
         while i < timesteps:
             
             x_temp = x[i:i+8*2*self.i3d_input_interval]
             
-            x_temp = np.expand_dims(x_temp, axis=0).transpose(0, 4, 1, 2, 3)
+            x_temp = x_temp.unsqueeze(0).transpose(0, 4, 1, 2, 3)
             
             _, mixed_5c = self.I3D.extract(x_temp)
             
