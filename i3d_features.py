@@ -61,10 +61,10 @@ def main():
     
     start_time = time.time()
     
-    dataset_name = "SumMe"
+    dataset_name = "TVSum"
    
     # Load pretrained i3d model 
-    root = "../kinetics_i3d_pytorch/"
+    root = "../../kinetics_i3d_pytorch/"
     rgb_pt_checkpoint = root+'model/model_rgb.pth'
     
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -84,7 +84,7 @@ def main():
     
     counter = 0
     with h5py.File(h5_features_file, 'w')  as f1, h5py.File(raw_h5_features_file, 'w') as f2:
-        for file in [f for f in os.listdir(videos_path) if "webm" in f][:4]:
+        for file in [f for f in os.listdir(videos_path) if "mp4" in f]:
             
             print(videos_path+file)
             counter += 1
