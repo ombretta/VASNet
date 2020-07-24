@@ -33,15 +33,11 @@ class i3d_SelfAttention(nn.Module):
         all_features = torch.zeros([math.ceil(timesteps/8), 1024], device=x.get_device())
         i = 0
         
-        print(x.shape)
-        
         while i < timesteps:
             
             x_temp = x[:,i:i+8*2*self.i3d_input_interval,:,:,:]
             
             x_temp = x_temp.permute(0, 4, 1, 2, 3)
-            
-            print(x_temp.shape)
             
             _, mixed_5c, _ = self.I3D.extract(x_temp)
             
@@ -52,12 +48,6 @@ class i3d_SelfAttention(nn.Module):
             
             i += 8*2*self.i3d_input_interval
             
-            print("features.is_cuda", features.is_cuda)
-            
-        print(all_features.shape)
-        
-        print("all_features.is_cuda", all_features.is_cuda)
-        
         y, att_weights_ = self.VASNet(all_features.unsqueeze(0), all_features.shape[1])
 
         return y, att_weights_
