@@ -36,7 +36,7 @@ class i3d_SelfAttention(nn.Module):
             
             x_temp = x[i:i+8*2*self.i3d_input_interval]
             
-            x_temp = x_temp.unsqueeze(0).transpose(0, 4, 1, 2, 3)
+            x_temp = x_temp.permute(0, 4, 1, 2, 3)
             
             _, mixed_5c = self.I3D.extract(x_temp)
             
