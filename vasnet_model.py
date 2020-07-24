@@ -5,14 +5,56 @@ __status__ = "Research"
 __date__ = "1/12/2018"
 __license__= "MIT License"
 
-
+import math
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from config import  *
 from layer_norm import  *
 
+sys.path.append("../../instructional_videos/i3d_breakfast/src/")
 
+from i3dpt import I3D
+
+
+class i3d_SelfAttention(nn.Module):
+    
+    def __init__(self, i3d_input_interval=30):
+        super(i3d_SelfAttention, self).__init__()
+
+        self.i3d_input_interval = i3d_input_interval
+        self.I3D = I3D(num_classes=1)
+        self.VASNet = VASNet()
+
+    def forward(self, x, seq_len):
+
+        timesteps = x.shape[0]
+        all_features = np.zeros([math.ceil(timesteps/8), 1024])
+        i = 0
+        
+        while i < timesteps:
+            
+            x_temp = x[i:i+8*2*self.i3d_input_interval]
+            
+            x_temp = np.expand_dims(x_temp, axis=0).transpose(0, 4, 1, 2, 3)
+            
+            _, mixed_5c = self.I3D.extract(x_temp)
+            
+            features = F.adaptive_avg_pool3d(mixed_5c, (None, 1, 1))
+            features = features.squeeze(3).squeeze(3).squeeze(0)
+            features = features.permute(1,0)
+            all_features[round(i/8):round(i/8)+features.shape[0]] = features
+            
+            i += 8*2*self.i3d_input_interval
+            
+        print(all_features.shape)
+        
+        y, att_weights_ = self.VASNet(all_features, all_features.shape[1])
+
+        return y, att_weights_
+    
+    
 
 class SelfAttention(nn.Module):
 

@@ -38,6 +38,8 @@ class HParameters:
 
         self.splits = ['splits/tvsum_splits.json',
                         'splits/summe_splits.json']
+        
+        self.finetune = False
 
         # Removed data augmentation, useless with i3d features
         # self.splits += ['splits/tvsum_aug_splits.json',

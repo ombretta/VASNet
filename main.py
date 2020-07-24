@@ -167,11 +167,19 @@ class AONet:
         random.seed(rnd_seed)
         np.random.seed(rnd_seed)
         torch.manual_seed(rnd_seed)
-
-        self.model = VASNet()
-        self.model.eval()
-        self.model.apply(weights_init)
-        #print(self.model)
+        
+        if not hps.finetune:
+            self.model = VASNet()
+            self.model.eval()
+            self.model.apply(weights_init)
+        
+        else:
+            self.model = i3d_SelfAttention()
+            self.model.eval()
+            self.model.apply(weights_init) # Check if this works
+            
+            rgb_pt_checkpoint = "../../kinetics_i3d_pytorch/model/model_rgb.pth"
+            self.model.I3D.load_state_dict(torch.load(rgb_pt_checkpoint))
 
         cuda_device = cuda_device or self.hps.cuda_device
 
@@ -500,7 +508,8 @@ if __name__ == "__main__":
     parser.add_argument('--lr', type=float, default=0.00005, help="Learning rate") 
     parser.add_argument('--epochs_max', type=int, default=300, help="Maximum number of epochs") 
     parser.add_argument('--coeff', type=float, default=0.0, help="Coefficient for Seyran's stochastic regularization term") 
-        
+    parser.add_argument('-f', '--finetune', action='store_true', help="Finetune i3d")    
+    
     args = parser.parse_args()
 
     # MAIN

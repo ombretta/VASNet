@@ -12,7 +12,7 @@ import torch.nn.functional as F
 import matplotlib.pyplot as plt
 
 import sys
-sys.path.append("/Users/ombretta/Documents/Code/i3d_breakfast/src/")
+sys.path.append("../../instructional_videos/i3d_breakfast/src/")
 
 from i3dpt import I3D
 
@@ -74,11 +74,11 @@ def main():
     i3d_rgb.load_state_dict(torch.load(rgb_pt_checkpoint))
     i3d_rgb.to(device)
     
-    h5_features_file = "./"+dataset_name+"_raw_30s_.hdf5"
+    h5_features_file = "./"+dataset_name+"_30s_.hdf5"
     raw_h5_features_file = "./"+dataset_name+"_raw_30s_.hdf5"
     
     # Select video from path 
-    videos_path = "./"+dataset_name+"/videos/"
+    videos_path = "../"+dataset_name+"/videos/"
     
     scaled_frameHeight = 224
     
