@@ -13,6 +13,7 @@ import torch.nn.functional as F
 from config import  *
 from layer_norm import  *
 
+import sys
 sys.path.append("../../instructional_videos/i3d_breakfast/src/")
 
 from i3dpt import I3D
@@ -24,7 +25,7 @@ class i3d_SelfAttention(nn.Module):
         super(i3d_SelfAttention, self).__init__()
 
         self.i3d_input_interval = i3d_input_interval
-        self.I3D = I3D(num_classes=1)
+        self.I3D = I3D(num_classes=400)
         self.VASNet = VASNet()
 
     def forward(self, x, seq_len):
