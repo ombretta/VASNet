@@ -182,6 +182,7 @@ class AONet:
             self.model.I3D.load_state_dict(torch.load(rgb_pt_checkpoint))
             
             # Don't finetune the first convolutional layers: it's too computational expensive
+
             params_not_to_train = ["conv3d_1a", "conv3d_2b", "conv3d_2c", "mixed_3b", "mixed_3c", "mixed_4", "mixed_5"]
             for name, param in self.model.I3D.named_parameters():
                     if any(param in name for param in params_not_to_train):
