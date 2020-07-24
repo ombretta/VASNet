@@ -12,7 +12,7 @@ import torch.nn.functional as F
 import matplotlib.pyplot as plt
 
 import sys
-sys.path.append("/Users/ombretta/Documents/Code/i3d_breakfast/src/")
+sys.path.append("../../instructional_videos/i3d_breakfast/src/")
 
 from i3dpt import I3D
 
@@ -61,10 +61,10 @@ def main():
     
     start_time = time.time()
     
-    dataset_name = "SumMe"
+    dataset_name = "TVSum"
    
     # Load pretrained i3d model 
-    root = "../kinetics_i3d_pytorch/"
+    root = "../../kinetics_i3d_pytorch/"
     rgb_pt_checkpoint = root+'model/model_rgb.pth'
     
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -74,17 +74,17 @@ def main():
     i3d_rgb.load_state_dict(torch.load(rgb_pt_checkpoint))
     i3d_rgb.to(device)
     
-    h5_features_file = "./"+dataset_name+"_raw_30s_.hdf5"
+    h5_features_file = "./"+dataset_name+"_30s_.hdf5"
     raw_h5_features_file = "./"+dataset_name+"_raw_30s_.hdf5"
     
     # Select video from path 
-    videos_path = "./"+dataset_name+"/videos/"
+    videos_path = "../"+dataset_name+"/videos/"
     
     scaled_frameHeight = 224
     
     counter = 0
     with h5py.File(h5_features_file, 'w')  as f1, h5py.File(raw_h5_features_file, 'w') as f2:
-        for file in [f for f in os.listdir(videos_path) if "webm" in f][:4]:
+        for file in [f for f in os.listdir(videos_path) if "mp4" in f]:
             
             print(videos_path+file)
             counter += 1
