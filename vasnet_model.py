@@ -20,7 +20,7 @@ from i3dpt import I3D
 
 class i3d_SelfAttention(nn.Module):
     
-    def __init__(self, i3d_input_interval=30):
+    def __init__(self, i3d_input_interval=1):
         super(i3d_SelfAttention, self).__init__()
 
         self.i3d_input_interval = i3d_input_interval
@@ -33,11 +33,15 @@ class i3d_SelfAttention(nn.Module):
         all_features = torch.zeros([math.ceil(timesteps/8), 1024])
         i = 0
         
+        print(x.shape)
+        
         while i < timesteps:
             
             x_temp = x[i:i+8*2*self.i3d_input_interval]
             
             x_temp = x_temp.permute(0, 4, 1, 2, 3)
+            
+            print(x_temp.shape)
             
             _, mixed_5c = self.I3D.extract(x_temp)
             
