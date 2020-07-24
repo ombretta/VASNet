@@ -20,7 +20,7 @@ from i3dpt import I3D
 
 class i3d_SelfAttention(nn.Module):
     
-    def __init__(self, i3d_input_interval=1):
+    def __init__(self, i3d_input_interval=30):
         super(i3d_SelfAttention, self).__init__()
 
         self.i3d_input_interval = i3d_input_interval
@@ -29,21 +29,17 @@ class i3d_SelfAttention(nn.Module):
 
     def forward(self, x, seq_len):
 
-        timesteps = x.shape[0]
-        all_features = torch.zeros([math.ceil(timesteps/8), 1024])
+        timesteps = x.shape[1]
+        all_features = torch.zeros([math.ceil(timesteps/8), 1024], device=x.get_device())
         i = 0
-        
-        print(x.shape)
         
         while i < timesteps:
             
-            x_temp = x[i:i+8*2*self.i3d_input_interval]
+            x_temp = x[:,i:i+8*2*self.i3d_input_interval,:,:,:]
             
             x_temp = x_temp.permute(0, 4, 1, 2, 3)
             
-            print(x_temp.shape)
-            
-            _, mixed_5c = self.I3D.extract(x_temp)
+            _, mixed_5c, _ = self.I3D.extract(x_temp)
             
             features = F.adaptive_avg_pool3d(mixed_5c, (None, 1, 1))
             features = features.squeeze(3).squeeze(3).squeeze(0)
@@ -54,7 +50,7 @@ class i3d_SelfAttention(nn.Module):
             
         print(all_features.shape)
         
-        y, att_weights_ = self.VASNet(all_features, all_features.shape[1])
+        y, att_weights_ = self.VASNet(all_features.unsqueeze(0), all_features.shape[1])
 
         return y, att_weights_
     
