@@ -33,6 +33,8 @@ class i3d_SelfAttention(nn.Module):
         all_features = torch.zeros([math.ceil(timesteps/8), 1024])
         i = 0
         
+        print(x.shape)
+        
         while i < timesteps:
             
             x_temp = x[i:i+8*2*self.i3d_input_interval]

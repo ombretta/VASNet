@@ -186,7 +186,7 @@ class AONet:
             params_not_to_train = ["conv3d_1a", "conv3d_2b", "conv3d_2c", "mixed_3b", "mixed_3c", "mixed_4", "mixed_5"]
             for name, param in self.model.I3D.named_parameters():
                     if any(param in name for param in params_not_to_train):
-                        print(name, param)
+                        # print(name, param)
                         param.requires_grad = False
 
         cuda_device = cuda_device or self.hps.cuda_device
