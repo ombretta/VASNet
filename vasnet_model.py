@@ -12,6 +12,7 @@ import torch.nn.functional as F
 from config import  *
 from layer_norm import  *
 
+import sys
 sys.path.append("../../instructional_videos/i3d_breakfast/src/")
 
 from i3dpt import I3D
