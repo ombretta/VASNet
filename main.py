@@ -169,11 +169,13 @@ class AONet:
         torch.manual_seed(rnd_seed)
         
         if not hps.finetune:
+            print("Model: VASNet")
             self.model = VASNet()
             self.model.eval()
             self.model.apply(weights_init)
         
         elif hps.finetune and hps.backbone == "I3D":
+            print("Model: I3D + VASNet")
             self.model = i3d_SelfAttention()
             self.model.eval()
             self.model.apply(weights_init) # Check if this works
@@ -190,6 +192,7 @@ class AONet:
                         param.requires_grad = False
                         
         elif hps.finetune and hps.backbone == "I3D_afterMaxPool3d":
+            print("Model: I3D_afterMaxPool3d + VASNet")
             self.model = i3d_afterMaxPool3d_SelfAttention()
             self.model.eval()
             self.model.apply(weights_init) # Check if this works
@@ -244,7 +247,7 @@ class AONet:
         print("Initializing VASNet model and optimizer...")
         self.model.train()
 
-        criterion = nn.MSELoss()
+        criterion = torch.nn.MSELoss()
 
         if self.hps.use_cuda:
             criterion = criterion.cuda()
