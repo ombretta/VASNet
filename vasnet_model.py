@@ -38,11 +38,11 @@ class i3d_afterMaxPool3d_SelfAttention(nn.Module):
         
         while i < timesteps:
             
-            x_temp = x[:,i:i+(8*2)/4*self.i3d_input_interval,:,:,:]
+            x_temp = x[:,:,i:i+(8*2)/4*self.i3d_input_interval,:,:]
             
             print("t_temp", x_temp.shape)
             
-            _, mixed_5c, _ = self.I3D_after_maxPool3d.extract(x_temp)
+            mixed_5c = self.I3D_after_maxPool3d.extract(x_temp)
             
             features = F.adaptive_avg_pool3d(mixed_5c, (None, 1, 1))
             features = features.squeeze(3).squeeze(3).squeeze(0)
