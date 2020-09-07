@@ -38,7 +38,7 @@ class i3d_afterMaxPool3d_SelfAttention(nn.Module):
         
         while i < timesteps:
             
-            x_temp = x[:,i:i+(8*2)/4*self.i3d_input_interval,:,:,:]
+            x_temp = x[:,i:i+int((8*2)/4)*self.i3d_input_interval,:,:,:]
             
             x_temp = x_temp.permute(0, 4, 1, 2, 3)
             
