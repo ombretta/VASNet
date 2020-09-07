@@ -22,7 +22,7 @@ from tensorboardX import SummaryWriter
 from config import  *
 from sys_utils import *
 from vsum_tools import  *
-from vasnet_model import  *
+from vasnet_model import VASNet, i3d_SelfAttention, i3d_afterMaxPool3d_SelfAttention
 
 
 def weights_init(m):
@@ -173,7 +173,7 @@ class AONet:
             self.model.eval()
             self.model.apply(weights_init)
         
-        else:
+        elif hps.finetune and hps.backbone == "I3D":
             self.model = i3d_SelfAttention()
             self.model.eval()
             self.model.apply(weights_init) # Check if this works
@@ -188,7 +188,21 @@ class AONet:
                     if any(param in name for param in params_not_to_train):
                         # print(name, param)
                         param.requires_grad = False
-
+                        
+        elif hps.finetune and hps.backbone == "I3D_afterMaxPool3d":
+            self.model = i3d_afterMaxPool3d_SelfAttention()
+            self.model.eval()
+            self.model.apply(weights_init) # Check if this works
+            
+            rgb_pt_checkpoint = "../../kinetics_i3d_pytorch/model/model_rgb.pth"
+            # self.model.I3D.load_state_dict(torch.load(rgb_pt_checkpoint))
+            i3d_checkpoint = torch.load(rgb_pt_checkpoint)
+            model_dict = self.model.I3D_after_maxPool3d.state_dict()
+            model_dict.update({k.replace("module.",""):i3d_checkpoint[k] \
+                              for k in i3d_checkpoint.keys() \
+                              if ("mixed_4" in k or "mixed_5" in k)})
+            self.model.I3D_after_maxPool3d.load_state_dict(model_dict)
+            
         cuda_device = cuda_device or self.hps.cuda_device
 
         if self.hps.use_cuda:
@@ -254,6 +268,9 @@ class AONet:
 
             for i, key in enumerate(train_keys):
                 dataset = self.get_data(key)
+                
+                print(dataset)
+                
                 seq = dataset['features'][...]
                 seq = torch.from_numpy(seq).unsqueeze(0)
                 target = dataset['gtscore'][...]
@@ -329,6 +346,7 @@ class AONet:
         with torch.no_grad():
             for i, key in enumerate(keys):
                 data = self.get_data(key)
+                print(data)
                 # seq = self.dataset[key]['features'][...]
                 seq = data['features'][...]
                 seq = torch.from_numpy(seq).unsqueeze(0)
@@ -517,6 +535,7 @@ if __name__ == "__main__":
     parser.add_argument('--epochs_max', type=int, default=300, help="Maximum number of epochs") 
     parser.add_argument('--coeff', type=float, default=0.0, help="Coefficient for Seyran's stochastic regularization term") 
     parser.add_argument('-f', '--finetune', action='store_true', help="Finetune i3d")    
+    parser.add_argument('--backbone', type=str, help="Backbone used (I3D or I3D_afterMaxPool3d)")
     
     args = parser.parse_args()
 
