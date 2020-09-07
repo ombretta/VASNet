@@ -244,7 +244,7 @@ class AONet:
         print("Initializing VASNet model and optimizer...")
         self.model.train()
 
-        criterion = nn.MSELoss()
+        criterion = torch.nn.MSELoss()
 
         if self.hps.use_cuda:
             criterion = criterion.cuda()
@@ -270,11 +270,7 @@ class AONet:
                 dataset = self.get_data(key)
                 
                 print(dataset)
-<<<<<<< HEAD
 
-=======
-                
->>>>>>> 582405405b152f9f2724c5c6f645d1ae9e1ab146
                 seq = dataset['features'][...]
                 seq = torch.from_numpy(seq).unsqueeze(0)
                 target = dataset['gtscore'][...]
