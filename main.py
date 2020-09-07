@@ -254,6 +254,9 @@ class AONet:
 
             for i, key in enumerate(train_keys):
                 dataset = self.get_data(key)
+                
+                print(dataset)
+
                 seq = dataset['features'][...]
                 seq = torch.from_numpy(seq).unsqueeze(0)
                 target = dataset['gtscore'][...]

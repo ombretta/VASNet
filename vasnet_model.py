@@ -28,6 +28,8 @@ class i3d_SelfAttention(nn.Module):
         self.VASNet = VASNet()
 
     def forward(self, x, seq_len):
+        
+        print(x.shape)
 
         timesteps = x.shape[1]
         all_features = torch.zeros([math.ceil(timesteps/8), 1024], device=x.get_device())
