@@ -51,7 +51,7 @@ for lr in learning_rate:
                 " --l2_req=" + str(l2_req) + " --epochs_max=" + str(epochs_max)
             
             if coeff>0: full_text = full_text + " --coeff=" + str(coeff)
-            if backbone != "I3D": text += " --backbone="+backbone+" "
+            if backbone != "I3D": full_text = full_text + " --backbone="+backbone+" "
                 
             filename = "VASNet_" + features_type + "_lr" + str(lr) + "_l2req" + str(l2_req) + "_regcoeff" + str(coeff) + ".sbatch"
             
