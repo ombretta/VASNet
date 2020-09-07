@@ -22,7 +22,7 @@ from i3d_last_layer import I3D_after_maxPool3d
 class i3d_afterMaxPool3d_SelfAttention(nn.Module):
     
     def __init__(self, i3d_input_interval=30):
-        super(i3d_SelfAttention, self).__init__()
+        super(i3d_afterMaxPool3d_SelfAttention, self).__init__()
 
         self.i3d_input_interval = i3d_input_interval
         self.I3D_after_maxPool3d = I3D_after_maxPool3d(num_classes=400)
