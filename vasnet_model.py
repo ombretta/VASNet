@@ -16,7 +16,48 @@ import sys
 sys.path.append("../../instructional_videos/i3d_breakfast/src/")
 
 from i3dpt import I3D
+from i3d_last_layer import I3D_after_maxPool3d
 
+
+class i3d_afterMaxPool3d_SelfAttention(nn.Module):
+    
+    def __init__(self, i3d_input_interval=30):
+        super(i3d_SelfAttention, self).__init__()
+
+        self.i3d_input_interval = i3d_input_interval
+        self.I3D_after_maxPool3d = I3D_after_maxPool3d(num_classes=400)
+        self.VASNet = VASNet()
+
+    def forward(self, x, seq_len):
+        
+        print(x.shape)
+
+        timesteps = x.shape[1]
+        all_features = torch.zeros([math.ceil(timesteps/8), 1024], device=x.get_device())
+        i = 0
+        
+        while i < timesteps:
+            
+            x_temp = x[:,i:i+(8*2)/4*self.i3d_input_interval,:,:,:]
+            
+            x_temp = x_temp.permute(0, 4, 1, 2, 3)
+            
+            print("t_temp", x_temp.shape)
+            
+            _, mixed_5c, _ = self.I3D_after_maxPool3d.extract(x_temp)
+            
+            features = F.adaptive_avg_pool3d(mixed_5c, (None, 1, 1))
+            features = features.squeeze(3).squeeze(3).squeeze(0)
+            features = features.permute(1,0)
+            all_features[round(i/4):round(i/4)+features.shape[0]] = features
+            
+            i += (8*2)/4*self.i3d_input_interval
+            
+        print("VASNet input", all_features.shape)
+        y, att_weights_ = self.VASNet(all_features.unsqueeze(0), all_features.shape[1])
+
+        return y, att_weights_
+    
 
 class i3d_SelfAttention(nn.Module):
     
