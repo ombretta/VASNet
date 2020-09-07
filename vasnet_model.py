@@ -18,6 +18,27 @@ sys.path.append("../../instructional_videos/i3d_breakfast/src/")
 from i3dpt import I3D
 from i3d_last_layer import I3D_after_maxPool3d
 
+import subprocess
+
+def get_gpu_memory_map():
+    """Get the current gpu usage.
+
+    Returns
+    -------
+    usage: dict
+        Keys are device ids as integers.
+        Values are memory usage as integers in MB.
+    """
+    result = subprocess.check_output(
+        [
+            'nvidia-smi', '--query-gpu=memory.used',
+            '--format=csv,nounits,noheader'
+        ], encoding='utf-8')
+    # Convert lines into a dictionary
+    gpu_memory = [int(x) for x in result.strip().split('\n')]
+    gpu_memory_map = dict(zip(range(len(gpu_memory)), gpu_memory))
+    return gpu_memory_map
+
 
 class i3d_afterMaxPool3d_SelfAttention(nn.Module):
     
@@ -29,6 +50,8 @@ class i3d_afterMaxPool3d_SelfAttention(nn.Module):
         self.VASNet = VASNet()
 
     def forward(self, x, seq_len):
+        
+        get_gpu_memory_map()
         
         print(x.shape)
 
@@ -42,6 +65,8 @@ class i3d_afterMaxPool3d_SelfAttention(nn.Module):
             
             print("t_temp", x_temp.shape)
             
+            get_gpu_memory_map()
+            
             mixed_5c = self.I3D_after_maxPool3d.extract(x_temp)
             
             features = F.adaptive_avg_pool3d(mixed_5c, (None, 1, 1))
@@ -50,6 +75,8 @@ class i3d_afterMaxPool3d_SelfAttention(nn.Module):
             all_features[round(i/4):round(i/4)+features.shape[0]] = features
             
             i += (8*2)/4*self.i3d_input_interval
+            
+            get_gpu_memory_map()
             
         print("VASNet input", all_features.shape)
         y, att_weights_ = self.VASNet(all_features.unsqueeze(0), all_features.shape[1])
