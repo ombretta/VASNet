@@ -83,7 +83,10 @@ class i3d_afterMaxPool3d_SelfAttention(nn.Module):
             
         #     print(get_gpu_memory_map())
         
-        all_features = self.I3D_after_maxPool3d.extract(x)
+        features = self.I3D_after_maxPool3d.extract(x)
+        features = F.adaptive_avg_pool3d(features, (None, 1, 1))
+        features = features.squeeze(3).squeeze(3).squeeze(0)
+        all_features = features.permute(1,0)
             
         print("VASNet input", all_features.shape)
         y, att_weights_ = self.VASNet(all_features.unsqueeze(0), all_features.shape[1])
