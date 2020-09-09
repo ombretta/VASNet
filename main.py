@@ -272,7 +272,7 @@ class AONet:
             for i, key in enumerate(train_keys):
                 dataset = self.get_data(key)
                 
-                print(dataset)
+                # print(dataset)
 
                 seq = dataset['features'][...]
                 seq = torch.from_numpy(seq).unsqueeze(0)
@@ -312,7 +312,7 @@ class AONet:
 
                 torch.cuda.empty_cache() 
 
-                print(torch.cuda.memory_allocated())
+                # print(torch.cuda.memory_allocated())
             
             # Evaluate train dataset
             train_fscore, train_video_scores = self.eval(self.train_keys)
