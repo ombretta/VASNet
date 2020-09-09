@@ -358,7 +358,7 @@ class AONet:
         with torch.no_grad():
             for i, key in enumerate(keys):
                 data = self.get_data(key)
-                print(data)
+                # print(data)
                 # seq = self.dataset[key]['features'][...]
                 seq = data['features'][...]
                 seq = torch.from_numpy(seq).unsqueeze(0)
@@ -449,7 +449,7 @@ def eval_split(hps, splits_filename, output_file, data_dir='test'):
         weights_filename, _ = ao.lookup_weights_file(data_dir)
         print("Loading model:", weights_filename)
         ao.load_model(weights_filename)
-        val_fscore, video_scores = ao.eval(ao.test_keys)
+        val_fscore, video_scores = ao.eval(ao.test_keys, results_filename=data_dir+'/test_results.h5')
         val_fscores.append(val_fscore)
 
         val_fscore_avg = np.mean(val_fscores)
