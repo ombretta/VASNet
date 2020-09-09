@@ -61,20 +61,23 @@ class i3d_afterMaxPool3d_SelfAttention(nn.Module):
         
         while i < timesteps:
             
-            x_temp = x[:,int(i):int(i+(8*2)/4*self.i3d_input_interval),:,:,:]
+            x_temp = x[:,int(i):int(i+(8*1)/4*self.i3d_input_interval),:,:,:]
             
+            print("i", i, "i/4", i/4)
             print("t_temp", x_temp.shape)
             
             get_gpu_memory_map()
             
-            mixed_5c = self.I3D_after_maxPool3d.extract(x_temp)
+            features = self.I3D_after_maxPool3d.extract(x_temp)
             
-            features = F.adaptive_avg_pool3d(mixed_5c, (None, 1, 1))
+            features = F.adaptive_avg_pool3d(features, (None, 1, 1))
             features = features.squeeze(3).squeeze(3).squeeze(0)
             features = features.permute(1,0)
+            print("features", features.shape)
+            
             all_features[round(i/4):round(i/4)+features.shape[0]] = features
             
-            i += (8*2)/4*self.i3d_input_interval
+            i += (8*1)/4*self.i3d_input_interval
             
             get_gpu_memory_map()
             

@@ -40,6 +40,7 @@ class HParameters:
                         'splits/summe_splits.json']
         
         self.finetune = False
+        self.backbone = "I3D"
 
         # Removed data augmentation, useless with i3d features
         # self.splits += ['splits/tvsum_aug_splits.json',
