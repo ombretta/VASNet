@@ -305,13 +305,9 @@ class AONet:
                 self.optimizer.step()
                 
                 loss.detach_()
-                avg_loss.append([float(loss.item()), float(loss_att)])
+                avg_loss.append([float(loss), float(loss_att)])
                 
                 del loss, y, seq, target
-
-                torch.cuda.empty_cache() 
-
-                print(torch.cuda.memory_allocated())
             
             # Evaluate train dataset
             train_fscore, train_video_scores = self.eval(self.train_keys)
