@@ -51,9 +51,9 @@ class i3d_afterMaxPool3d_SelfAttention(nn.Module):
 
     def forward(self, x, seq_len):
         
-        print(get_gpu_memory_map())
+        # print(get_gpu_memory_map())
         
-        print(x.shape)
+        # print(x.shape)
 
         # timesteps = x.shape[2]
         # all_features = torch.zeros([math.ceil(timesteps/2), 1024], device=x.get_device())
@@ -88,7 +88,7 @@ class i3d_afterMaxPool3d_SelfAttention(nn.Module):
         features = features.squeeze(3).squeeze(3).squeeze(0)
         all_features = features.permute(1,0)
             
-        print("VASNet input", all_features.shape)
+        # print("VASNet input", all_features.shape)
         y, att_weights_ = self.VASNet(all_features.unsqueeze(0), all_features.shape[1])
 
         return y, att_weights_

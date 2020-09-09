@@ -272,7 +272,7 @@ class AONet:
             for i, key in enumerate(train_keys):
                 dataset = self.get_data(key)
                 
-                print(dataset)
+                # print(dataset)
 
                 seq = dataset['features'][...]
                 seq = torch.from_numpy(seq).unsqueeze(0)
@@ -305,22 +305,14 @@ class AONet:
                 self.optimizer.step()
                 
                 loss.detach_()
-<<<<<<< HEAD
-                
-                avg_loss.append([float(loss.item()), float(loss_att)])
-                
-                print(torch.cuda.memory_allocated())
-                
-                del loss, y, seq, target
-=======
+
                 avg_loss.append([float(loss.item()), float(loss_att)])
                 
                 del loss, y, seq, target
 
                 torch.cuda.empty_cache() 
 
-                print(torch.cuda.memory_allocated())
->>>>>>> 4d2d63b8cf8c0e7d6b6b99b531317d9ec7522744
+                # print(torch.cuda.memory_allocated())
             
             # Evaluate train dataset
             train_fscore, train_video_scores = self.eval(self.train_keys)
