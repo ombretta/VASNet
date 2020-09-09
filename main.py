@@ -358,7 +358,7 @@ class AONet:
         with torch.no_grad():
             for i, key in enumerate(keys):
                 data = self.get_data(key)
-                print(data)
+                # print(data)
                 # seq = self.dataset[key]['features'][...]
                 seq = data['features'][...]
                 seq = torch.from_numpy(seq).unsqueeze(0)
