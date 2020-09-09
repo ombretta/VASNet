@@ -51,22 +51,28 @@ class i3d_afterMaxPool3d_SelfAttention(nn.Module):
 
     def forward(self, x, seq_len):
         
-        get_gpu_memory_map()
+        print(get_gpu_memory_map())
         
         print(x.shape)
 
         timesteps = x.shape[2]
-        all_features = torch.zeros([math.ceil(timesteps/4), 1024], device=x.get_device())
+        all_features = torch.zeros([math.ceil(timesteps/2), 1024], device=x.get_device())
         i = 0
         
         while i < timesteps:
             
+<<<<<<< HEAD
             x_temp = x[:,int(i):int(i+(8*1)/4*self.i3d_input_interval),:,:,:]
+=======
+            x_temp = x[:,:,int(i):int(i+int(8*1)/2*self.i3d_input_interval),:,:]
+            
+            print("i", i, "i/2", i/2)
+>>>>>>> 4d2d63b8cf8c0e7d6b6b99b531317d9ec7522744
             
             print("i", i, "i/4", i/4)
             print("t_temp", x_temp.shape)
             
-            get_gpu_memory_map()
+            print(get_gpu_memory_map())
             
             features = self.I3D_after_maxPool3d.extract(x_temp)
             
@@ -74,12 +80,19 @@ class i3d_afterMaxPool3d_SelfAttention(nn.Module):
             features = features.squeeze(3).squeeze(3).squeeze(0)
             features = features.permute(1,0)
             print("features", features.shape)
+<<<<<<< HEAD
             
             all_features[round(i/4):round(i/4)+features.shape[0]] = features
             
             i += (8*1)/4*self.i3d_input_interval
+=======
+
+            all_features[round(i/2):round(i/2)+features.shape[0]] = features
             
-            get_gpu_memory_map()
+            i += (8*1)/2*self.i3d_input_interval
+>>>>>>> 4d2d63b8cf8c0e7d6b6b99b531317d9ec7522744
+            
+            print(get_gpu_memory_map())
             
         print("VASNet input", all_features.shape)
         y, att_weights_ = self.VASNet(all_features.unsqueeze(0), all_features.shape[1])
