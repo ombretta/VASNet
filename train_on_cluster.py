@@ -4,7 +4,7 @@ import math
 text = "#!/bin/sh\n\
 #SBATCH --partition=general\n\
 #SBATCH --qos=long\n\
-#SBATCH --time=48:00:00\n\
+#SBATCH --time=20:00:00\n\
 #SBATCH --ntasks=1\n\
 #SBATCH --cpus-per-task=2\n\
 #SBATCH --mem=16000\n\
@@ -21,8 +21,8 @@ features_type = "i3d"
 ten_seconds_features = False
 three_seconds_features = False
 finetune = False
-backbone = "I3D_afterMaxPool3d" #"I3D" #"I3D_afterMaxPool3d"
-fps = 8
+backbone = "I3D" #"I3D_afterMaxPool3d"
+fps = 4
 
 if features_type == "i3d":
     if finetune and fps==16:
