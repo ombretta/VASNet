@@ -41,6 +41,7 @@ class HParameters:
         
         self.finetune = False
         self.backbone = "I3D"
+        self.store_intermediate_results = False
 
         # Removed data augmentation, useless with i3d features
         # self.splits += ['splits/tvsum_aug_splits.json',
