@@ -314,11 +314,21 @@ class AONet:
 
                 # print(torch.cuda.memory_allocated())
             
+            
             # Evaluate train dataset
             train_fscore, train_video_scores = self.eval(self.train_keys)
             
+            # If true, store generated summaries at every epoch (test results)
+            if self.hps.store_intermediate_results:
+                path, filename = os.path.split(self.split_file)
+                base_filename, _ = os.path.splitext(filename)
+                path = os.path.join(output_dir, 'temp_results', base_filename+'_'+str(self.split_id))
+                os.makedirs(path, exist_ok=True)
+                results_filename = str(epoch)+'.h5'
+            else: results_filename = None
+                
             # Evaluate test dataset
-            val_fscore, video_scores = self.eval(self.test_keys)
+            val_fscore, video_scores = self.eval(self.test_keys, results_filename)
             if max_val_fscore < val_fscore:
                 max_val_fscore = val_fscore
                 max_val_fscore_epoch = epoch
@@ -548,6 +558,8 @@ if __name__ == "__main__":
     parser.add_argument('--coeff', type=float, default=0.0, help="Coefficient for Seyran's stochastic regularization term") 
     parser.add_argument('-f', '--finetune', action='store_true', help="Finetune i3d")    
     parser.add_argument('--backbone', type=str, help="Backbone used (I3D or I3D_afterMaxPool3d)")
+    parser.add_argument('--store_intermediate_results', action='store_true', \
+                        help="Wheter to store intermediate scores and machine summaries during training")    
     
     args = parser.parse_args()
 
