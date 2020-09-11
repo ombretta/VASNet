@@ -324,7 +324,7 @@ class AONet:
                 base_filename, _ = os.path.splitext(filename)
                 path = os.path.join(output_dir, 'temp_results', base_filename+'_'+str(self.split_id))
                 os.makedirs(path, exist_ok=True)
-                results_filename = str(epoch)+'.h5'
+                results_filename = os.path.join(path, str(epoch)+'.h5')
             else: results_filename = None
                 
             # Evaluate test dataset
