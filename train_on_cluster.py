@@ -13,17 +13,17 @@ module use /opt/insy/modulefiles\n\
 module load cuda/10.0 cudnn/10.0-7.6.0.64\n\
 srun python main.py "
 
-train = True
+train = False
 if train: text += "--train "
 
 features_type = "i3d"
 
 ten_seconds_features = False
 three_seconds_features = False
-finetune = False
+finetune = True
 store_intermediate_results = True
-backbone = "I3D" #"I3D_afterMaxPool3d"
-fps = 8
+backbone = "I3D_afterMaxPool3d" #"I3D"
+fps = 2
 
 if features_type == "i3d":
     if finetune and fps==16:
@@ -44,7 +44,7 @@ else: text += " --output-dir=google_features"
 learning_rate =[0.00005] #[0.00005, 0.0005, 0.005, 0.05]
 weight_decay = [0.00001] #[0.01, 0.001, 0.0001, 0.00001, 0.000001] 
 epochs_max = 500
-coeffs = [0] #[0.1, 0.2, 0.3, 0.4, 0.5, 1, 2, 5] # coeff for the stochastic regularization term
+coeffs = [0, 0.1, 0.5] #[0.1, 0.2, 0.3, 0.4, 0.5, 1, 2, 5] # coeff for the stochastic regularization term
 
 for lr in learning_rate:
     for l2_req in weight_decay:
