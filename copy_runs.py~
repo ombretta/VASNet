@@ -1,7 +1,6 @@
 import os
 
 runs = "runs/"
-if not os.path.exists(runs): os.mkdir(runs)
 
 dirs = [d for d in os.listdir(".") if os.path.exists(d+"/runs")]
 
