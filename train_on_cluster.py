@@ -41,10 +41,10 @@ if features_type == "i3d":
 
 else: text += " --output-dir=google_features"
 
-learning_rate =[0.00005] #[0.00005, 0.0005, 0.005, 0.05]
-weight_decay = [0.00001] #[0.01, 0.001, 0.0001, 0.00001, 0.000001] 
+learning_rate =[0.00005, 0.0005, 0.005, 0.05]
+weight_decay = [0.01, 0.001, 0.0001, 0.00001, 0.000001] 
 epochs_max = 500
-coeffs = [0, 0.1, 0.5] #[0.1, 0.2, 0.3, 0.4, 0.5, 1, 2, 5] # coeff for the stochastic regularization term
+coeffs = [0.1, 0.2, 0.3, 0.4, 0.5, 1, 2, 5] # coeff for the stochastic regularization term
 
 for lr in learning_rate:
     for l2_req in weight_decay:

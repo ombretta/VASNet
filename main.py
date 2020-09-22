@@ -9,7 +9,7 @@ import os
 import torch
 from torchvision import transforms
 import numpy as np
-import scipy
+from scipy import stats
 import time
 import glob
 import random
@@ -395,10 +395,10 @@ class AONet:
         return f_score, video_scores, mean_kendall_corr_coeff, mean_spearman_corr_coeff
 
     
-    def ranking_corr_coeffs(machine_scores, gt_scores):
-        k_coeff = scipy.stats.kendalltau(machine_scores, gt_scores)
-        s_coeff = scipy.stats.spearmanr(machine_scores, gt_scores)
-        return k_coeff, s_coeff
+    def ranking_corr_coeffs(self, machine_scores, gt_scores):
+        k_coeff = stats.kendalltau(machine_scores, gt_scores)
+        s_coeff = stats.spearmanr(machine_scores, gt_scores)
+        return k_coeff[0], s_coeff[0]
     
     
     def eval_summary(self, machine_summary_activations, test_keys, 
@@ -495,8 +495,8 @@ def eval_split(hps, splits_filename, output_file, data_dir='test'):
         val_fscore, video_scores, mean_kendall_corr_coeff, mean_spearman_corr_coeff = \
             ao.eval(ao.test_keys, results_filename=data_dir+'/test_results.h5')
         val_fscores.append(val_fscore)
-        mean_kendall_corr_coeffs.append(mean_kendall_corr_coeffs)
-        mean_spearman_corr_coeffs.append(mean_spearman_corr_coeffs)
+        mean_kendall_corr_coeffs.append(mean_kendall_corr_coeff)
+        mean_spearman_corr_coeffs.append(mean_spearman_corr_coeff)
 
         val_fscore_avg = np.mean(val_fscores)
         mean_kendall_corr_coeffs_avg = np.mean(mean_kendall_corr_coeffs)
@@ -627,13 +627,13 @@ if __name__ == "__main__":
         for i, split_filename in enumerate(hps.splits):
             f_score, k_coeffs, s_coeffs = eval_split(hps, split_filename, output_file, data_dir=hps.output_dir)
             results.append([i+1, split_filename, str(round(f_score * 100.0, 3))+"%", 
-            str(round(k_coeffs, 3))+"%", str(round(s_coeffs, 3))+"%"])
+            str(round(k_coeffs, 3)), str(round(s_coeffs, 3))])
         
         output_file.close()
         
         
         print("\nFinal Results:")
-        print_table(results)
+        print_table(results, cell_width=[3, 35, 8, 8, 8])
         
     sys.exit(0)
 
