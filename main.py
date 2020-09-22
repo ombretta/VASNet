@@ -9,6 +9,7 @@ import os
 import torch
 from torchvision import transforms
 import numpy as np
+import scipy
 import time
 import glob
 import random
@@ -21,7 +22,7 @@ from tensorboardX import SummaryWriter
 
 from config import  *
 from sys_utils import *
-from vsum_tools import  *
+from vsum_tools import generate_summary, evaluate_summary
 from vasnet_model import VASNet, i3d_SelfAttention, i3d_afterMaxPool3d_SelfAttention
 
 
@@ -324,11 +325,14 @@ class AONet:
                 base_filename, _ = os.path.splitext(filename)
                 path = os.path.join(output_dir, 'temp_results', base_filename+'_'+str(self.split_id))
                 os.makedirs(path, exist_ok=True)
-                results_filename = str(epoch)+'.h5'
+                results_filename = os.path.join(path, str(epoch)+'.h5')
             else: results_filename = None
                 
             # Evaluate test dataset
-            val_fscore, video_scores = self.eval(self.test_keys, results_filename)
+            val_fscore, video_scores, mean_kendall_corr_coeff, mean_spearman_corr_coeff = \
+                self.eval(self.test_keys, 
+                results_filename)
+                
             if max_val_fscore < val_fscore:
                 max_val_fscore = val_fscore
                 max_val_fscore_epoch = epoch
@@ -336,12 +340,15 @@ class AONet:
             avg_loss = np.array(avg_loss)
             print("   Train loss: {0:.05f}".format(np.mean(avg_loss[:, 0])), end='')
             print('   Test F-score avg/max: {0:0.5}/{1:0.5}'.format(val_fscore, max_val_fscore))
+            print('   Test ranking coeffs Kendall/Spearman: {0:0.5}/{1:0.5}'.format(mean_kendall_corr_coeff, mean_spearman_corr_coeff))
             
             # Send losses and accuracies to tensorboard 
             curr_time = time.time()
             writer.add_scalar("loss/training", np.mean(avg_loss[:, 0]), epoch, curr_time)
             writer.add_scalar("fscore/training", train_fscore, epoch, curr_time)
             writer.add_scalar("fscore/validation", val_fscore, epoch, curr_time)
+            writer.add_scalar("ranking_corr_coeff/validation/kendall", mean_kendall_corr_coeff, epoch, curr_time)
+            writer.add_scalar("ranking_corr_coeff/validation/spearman", mean_spearman_corr_coeff, epoch, curr_time)
 
             if self.verbose:
                 video_scores = [["No", "Video", "F-score"]] + video_scores
@@ -380,13 +387,22 @@ class AONet:
                 summary[key] = y[0].detach().cpu().numpy()
                 att_vecs[key] = att_vec.detach().cpu().numpy()
 
-        f_score, video_scores = self.eval_summary(summary, keys, metric=self.dataset_name,
-                    results_filename=results_filename, att_vecs=att_vecs)
+        f_score, video_scores, mean_kendall_corr_coeff, mean_spearman_corr_coeff = \
+                    self.eval_summary(summary, keys, metric=self.dataset_name,
+                    results_filename=results_filename, 
+                    att_vecs=att_vecs)
 
-        return f_score, video_scores
+        return f_score, video_scores, mean_kendall_corr_coeff, mean_spearman_corr_coeff
 
-
-    def eval_summary(self, machine_summary_activations, test_keys, results_filename=None, metric='tvsum', att_vecs=None):
+    
+    def ranking_corr_coeffs(machine_scores, gt_scores):
+        k_coeff = scipy.stats.kendalltau(machine_scores, gt_scores)
+        s_coeff = scipy.stats.spearmanr(machine_scores, gt_scores)
+        return k_coeff, s_coeff
+    
+    
+    def eval_summary(self, machine_summary_activations, test_keys, 
+                     results_filename=None, metric='tvsum', att_vecs=None):
 
         eval_metric = 'avg' if metric == 'tvsum' else 'max'
 
@@ -395,6 +411,10 @@ class AONet:
 
         fms = []
         video_scores = []
+        
+        kendall_corr_coeffs = []
+        spearman_corr_coeffs = []
+        
         for key_idx, key in enumerate(test_keys):
             d = self.get_data(key)
             probs = machine_summary_activations[key]
@@ -411,9 +431,15 @@ class AONet:
             machine_summary = generate_summary(probs, cps, num_frames, nfps, positions)
             fm, _, _ = evaluate_summary(machine_summary, user_summary, eval_metric)
             fms.append(fm)
+            
+            k_coeff, s_coeff = self.ranking_corr_coeffs(probs, d['gtscore'][...])
+            kendall_corr_coeffs.append(k_coeff)
+            spearman_corr_coeffs.append(s_coeff)
 
             # Reporting & logging
-            video_scores.append([key_idx + 1, key, "{:.1%}".format(fm)])
+            video_scores.append([key_idx + 1, key, "{:.1%}".format(fm), 
+                                 "{:.1%}".format(k_coeff), 
+                                 "{:.1%}".format(s_coeff)])
 
             if results_filename:
                 gt = d['gtscore'][...]
@@ -422,6 +448,9 @@ class AONet:
                 h5_res.create_dataset(key + '/gtscore', data=gt)
                 h5_res.create_dataset(key + '/fm', data=fm)
                 h5_res.create_dataset(key + '/picks', data=positions)
+                
+                h5_res.create_dataset(key + '/kendall_coeff', data=k_coeff)
+                h5_res.create_dataset(key + '/spearman_coeff', data=s_coeff)
 
                 video_name = key.split('/')[1]
                 if 'video_name' in d:
@@ -432,12 +461,14 @@ class AONet:
                     h5_res.create_dataset(key + '/att', data=att_vecs[key])
 
         mean_fm = np.mean(fms)
+        mean_kendall_corr_coeff = np.mean(kendall_corr_coeffs)
+        mean_spearman_corr_coeff = np.mean(spearman_corr_coeffs)
 
         # Reporting & logging
         if results_filename is not None:
             h5_res.close()
 
-        return mean_fm, video_scores
+        return mean_fm, video_scores, mean_kendall_corr_coeff, mean_spearman_corr_coeff
 
 
 #==============================================================================================
@@ -453,22 +484,31 @@ def eval_split(hps, splits_filename, output_file, data_dir='test'):
     ao.load_split_file(splits_filename)
 
     val_fscores = []
+    mean_kendall_corr_coeffs = []
+    mean_spearman_corr_coeffs = []
     
     for split_id in range(len(ao.splits)):
         ao.select_split(split_id)
         weights_filename, _ = ao.lookup_weights_file(data_dir)
         print("Loading model:", weights_filename)
         ao.load_model(weights_filename)
-        val_fscore, video_scores = ao.eval(ao.test_keys, results_filename=data_dir+'/test_results.h5')
+        val_fscore, video_scores, mean_kendall_corr_coeff, mean_spearman_corr_coeff = \
+            ao.eval(ao.test_keys, results_filename=data_dir+'/test_results.h5')
         val_fscores.append(val_fscore)
+        mean_kendall_corr_coeffs.append(mean_kendall_corr_coeffs)
+        mean_spearman_corr_coeffs.append(mean_spearman_corr_coeffs)
 
         val_fscore_avg = np.mean(val_fscores)
-
+        mean_kendall_corr_coeffs_avg = np.mean(mean_kendall_corr_coeffs)
+        mean_spearman_corr_coeffs_avg = np.mean(mean_spearman_corr_coeffs)
+        
         if hps.verbose:
-            video_scores = [["No.", "Video", "F-score"]] + video_scores
+            video_scores = [["No.", "Video", "F-score", "K coeff", "S coeff"]] + video_scores
             print_table(video_scores, cell_width=[4,45,5])
 
         print("Avg F-score: ", val_fscore)
+        print("Avg K coeff: ", mean_kendall_corr_coeff)
+        print("Avg S coeff: ", mean_spearman_corr_coeff)
         print("")
         
         # Log F-score for this split_id
@@ -476,10 +516,14 @@ def eval_split(hps, splits_filename, output_file, data_dir='test'):
         output_file.flush()
     
     print("Total AVG F-score: ", val_fscore_avg)
+    print("Total AVG K coeff: ", mean_kendall_corr_coeffs_avg)
+    print("Total AVG S coeff: ", mean_spearman_corr_coeffs_avg)
     output_file.write(splits_filename + "Total AVG F-score: " + str(val_fscore_avg) + '%\n')
+    output_file.write(splits_filename + "Total AVG K coeff: " + str(mean_kendall_corr_coeffs_avg) + '%\n')
+    output_file.write(splits_filename + "Total AVG S coeff: " + str(mean_spearman_corr_coeffs_avg) + '%\n')
     output_file.flush()
 
-    return val_fscore_avg
+    return val_fscore_avg, mean_kendall_corr_coeffs_avg, mean_spearman_corr_coeffs_avg
 
 
 def train(hps):
@@ -581,10 +625,12 @@ if __name__ == "__main__":
         output_file = open(hps.output_dir + '/test_results.txt', 'wt')
     
         for i, split_filename in enumerate(hps.splits):
-            f_score = eval_split(hps, split_filename, output_file, data_dir=hps.output_dir)
-            results.append([i+1, split_filename, str(round(f_score * 100.0, 3))+"%"])
+            f_score, k_coeffs, s_coeffs = eval_split(hps, split_filename, output_file, data_dir=hps.output_dir)
+            results.append([i+1, split_filename, str(round(f_score * 100.0, 3))+"%", 
+            str(round(k_coeffs, 3))+"%", str(round(s_coeffs, 3))+"%"])
         
         output_file.close()
+        
         
         print("\nFinal Results:")
         print_table(results)

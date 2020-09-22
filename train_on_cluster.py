@@ -13,10 +13,10 @@ module use /opt/insy/modulefiles\n\
 module load cuda/10.0 cudnn/10.0-7.6.0.64\n\
 srun python main.py "
 
-train = True
+train = False
 if train: text += "--train "
 
-features_type = "i3d"
+features_type = "google"
 
 ten_seconds_features = False
 three_seconds_features = False
@@ -56,7 +56,7 @@ for lr in learning_rate:
                 " --l2_req=" + str(l2_req) + " --epochs_max=" + str(epochs_max)
             
             if coeff>0: full_text = full_text + " --coeff=" + str(coeff)
-            if backbone != "I3D": full_text = full_text + " --backbone="+backbone+" "
+            if backbone != "I3D" and features_type!="google": full_text = full_text + " --backbone="+backbone+" "
                 
             filename = "VASNet_" + features_type + "_lr" + str(lr) + "_l2req" + str(l2_req) + "_regcoeff" + str(coeff) + ".sbatch"
             
