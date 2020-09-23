@@ -6,8 +6,8 @@ __date__ = "1/12/2018"
 __license__= "MIT License"
 
 import os
+import sys
 import torch
-from torchvision import transforms
 import numpy as np
 from scipy import stats
 import time
@@ -20,8 +20,8 @@ import torch.nn.init as init
 
 from tensorboardX import SummaryWriter
 
-from config import  *
-from sys_utils import *
+from config import  HParameters
+from sys_utils import print_table, print_pkg_versions
 from vsum_tools import generate_summary, evaluate_summary
 from vasnet_model import VASNet, i3d_SelfAttention, i3d_afterMaxPool3d_SelfAttention
 
@@ -336,6 +336,8 @@ class AONet:
             if max_val_fscore < val_fscore:
                 max_val_fscore = val_fscore
                 max_val_fscore_epoch = epoch
+                max_val_fscore_kcoeff = mean_kendall_corr_coeff
+                max_val_fscore_scoeff = mean_spearman_corr_coeff
 
             avg_loss = np.array(avg_loss)
             print("   Train loss: {0:.05f}".format(np.mean(avg_loss[:, 0])), end='')
@@ -351,8 +353,8 @@ class AONet:
             writer.add_scalar("ranking_corr_coeff/validation/spearman", mean_spearman_corr_coeff, epoch, curr_time)
 
             if self.verbose:
-                video_scores = [["No", "Video", "F-score"]] + video_scores
-                print_table(video_scores, cell_width=[3,40,8])
+                # video_scores = [["No", "Video", "F-score"]] + video_scores
+                print_table(video_scores, cell_width=[5, 35, 8, 8, 8])
 
             # Save model weights
             path, filename = os.path.split(self.split_file)
@@ -364,7 +366,7 @@ class AONet:
             
         writer.close()
 
-        return max_val_fscore, max_val_fscore_epoch
+        return max_val_fscore, max_val_fscore_epoch, max_val_fscore_kcoeff, max_val_fscore_scoeff
 
 
     def eval(self, keys, results_filename=None):
@@ -558,7 +560,7 @@ def train(hps):
             ao.load_split_file(splits_file=split_filename)
             ao.select_split(split_id=split_id)
 
-            fscore, fscore_epoch = ao.train(output_dir=hps.output_dir)
+            fscore, fscore_epoch, fscore_kcoeff, fscore_scoeff = ao.train(output_dir=hps.output_dir)
             f_avg += fscore
 
             # Log F-score for this split_id
@@ -575,7 +577,9 @@ def train(hps):
             os.system('mv ' + hps.output_dir + '/models_temp/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ' + log_file)
             os.system('rm -rf ' + hps.output_dir + '/models_temp/' + log_dir)
 
-            print("Split: {0:}   Best F-score: {1:0.5f}   Model: {2:}".format(split_filename, fscore, log_file))
+            print("Split: {0:}   Best F-score: {1:0.5f}   "+
+                  "K coeff: {2:0.5f}   S coeff: {3:0.5f}   Model: {4:}"
+                  .format(split_filename, fscore, fscore_kcoeff, fscore_scoeff, log_file))
 
         # Write average F-score for all splits to the results.txt file
         f_avg /= n_folds
@@ -618,22 +622,21 @@ if __name__ == "__main__":
 
     if hps.train:
         train(hps)
-    else:
-        results=[['No', 'Split', 'Mean F-score']]
+        
+    results=[['No', 'Split', 'Mean F-score', 'K coeff', 'S coeff']]
+
+    # Create a file to collect results from all splits
+    output_file = open(hps.output_dir + '/test_results.txt', 'wt')
+
+    for i, split_filename in enumerate(hps.splits):
+        f_score, k_coeffs, s_coeffs = eval_split(hps, split_filename, output_file, data_dir=hps.output_dir)
+        results.append([i+1, split_filename, str(round(f_score * 100.0, 3))+"%", 
+        str(round(k_coeffs, 3)), str(round(s_coeffs, 3))])
     
-        # Create a file to collect results from all splits
-        output_file = open(hps.output_dir + '/test_results.txt', 'wt')
+    output_file.close()
     
-        for i, split_filename in enumerate(hps.splits):
-            f_score, k_coeffs, s_coeffs = eval_split(hps, split_filename, output_file, data_dir=hps.output_dir)
-            results.append([i+1, split_filename, str(round(f_score * 100.0, 3))+"%", 
-            str(round(k_coeffs, 3)), str(round(s_coeffs, 3))])
-        
-        output_file.close()
-        
-        
-        print("\nFinal Results:")
-        print_table(results, cell_width=[3, 35, 8, 8, 8])
+    print("\nFinal Results:")
+    print_table(results, cell_width=[3, 35, 8, 8, 8])
         
     sys.exit(0)
 
