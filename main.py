@@ -317,7 +317,7 @@ class AONet:
             
             
             # Evaluate train dataset
-            train_fscore, train_video_scores = self.eval(self.train_keys)
+            train_fscore, train_video_scores, _, _ = self.eval(self.train_keys)
             
             # If true, store generated summaries at every epoch (test results)
             if self.hps.store_intermediate_results:
@@ -398,8 +398,16 @@ class AONet:
 
     
     def ranking_corr_coeffs(self, machine_scores, gt_scores):
-        k_coeff = stats.kendalltau(machine_scores, gt_scores)
-        s_coeff = stats.spearmanr(machine_scores, gt_scores)
+        
+        # k_coeff = stats.kendalltau(machine_scores, gt_scores)
+        # s_coeff = stats.spearmanr(machine_scores, gt_scores)
+        
+        sorted_machine_scores = np.argsort(machine_scores)
+        sorted_gt_scores = np.argsort(gt_scores)
+        
+        k_coeff = stats.kendalltau(sorted_machine_scores, sorted_gt_scores)
+        s_coeff = stats.spearmanr(sorted_machine_scores, sorted_gt_scores)
+        
         return k_coeff[0], s_coeff[0]
     
     

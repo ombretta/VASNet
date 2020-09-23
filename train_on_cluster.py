@@ -1,22 +1,21 @@
 import os
-import math 
 
 interactive = True
 
 text = ''
 
 if not interactive:
-    text += "#!/bin/sh\n\
-    #SBATCH --partition=general\n\
-    #SBATCH --qos=long\n\
-    #SBATCH --time=24:00:00\n\
-    #SBATCH --ntasks=1\n\
-    #SBATCH --cpus-per-task=2\n\
-    #SBATCH --mem=16000\n\
-    #SBATCH --gres=gpu:1\n\
-    module use /opt/insy/modulefiles\n\
-    module load cuda/10.0 cudnn/10.0-7.6.0.64\n\
-    srun python main.py "
+    text += "#!/bin/sh\n"+\
+    "#SBATCH --partition=general\n"+\
+    "#SBATCH --qos=long\n"+\
+    "#SBATCH --time=24:00:00\n"+\
+    "#SBATCH --ntasks=1\n"+\
+    "#SBATCH --cpus-per-task=2\n"+\
+    "#SBATCH --mem=16000\n"+\
+    "#SBATCH --gres=gpu:1\n"+\
+    "module use /opt/insy/modulefiles\n"+\
+    "module load cuda/10.0 cudnn/10.0-7.6.0.64\n"+\
+    "srun python main.py "
 else: text += "python main.py "
 
 train = False
