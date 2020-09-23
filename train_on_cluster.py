@@ -1,22 +1,21 @@
 import os
-import math 
 
 interactive = False
 
 text = ''
 
 if not interactive:
-    text += "#!/bin/sh\n\
-    #SBATCH --partition=general\n\
-    #SBATCH --qos=long\n\
-    #SBATCH --time=24:00:00\n\
-    #SBATCH --ntasks=1\n\
-    #SBATCH --cpus-per-task=2\n\
-    #SBATCH --mem=16000\n\
-    #SBATCH --gres=gpu:1\n\
-    module use /opt/insy/modulefiles\n\
-    module load cuda/10.0 cudnn/10.0-7.6.0.64\n\
-    srun python main.py "
+    text += "#!/bin/sh\n"+\
+    "#SBATCH --partition=general\n"+\
+    "#SBATCH --qos=long\n"+\
+    "#SBATCH --time=24:00:00\n"+\
+    "#SBATCH --ntasks=1\n"+\
+    "#SBATCH --cpus-per-task=2\n"+\
+    "#SBATCH --mem=16000\n"+\
+    "#SBATCH --gres=gpu:1\n"+\
+    "module use /opt/insy/modulefiles\n"+\
+    "module load cuda/10.0 cudnn/10.0-7.6.0.64\n"+\
+    "srun python main.py "
 else: text += "python main.py "
 
 train = True
@@ -33,19 +32,19 @@ fps = 16
 
 if features_type == "i3d":
     if finetune and fps==16:
-        text += " --finetune --datasets datasets/raw_datasets_list.txt --output-dir=i3d_features_30s_finetuned"
+        text += " --finetune --datasets datasets/raw_datasets_list.txt --output-dir=results/i3d_features_30s_finetuned"
     elif three_seconds_features:
-        text += " --datasets datasets/datasets_list3.txt --output-dir=i3d_features_3s"
+        text += " --datasets datasets/datasets_list3.txt --output-dir=results/i3d_features_3s"
     elif ten_seconds_features:
-        text += " --datasets datasets/datasets_list2.txt --output-dir=i3d_features_10s"
+        text += " --datasets datasets/datasets_list2.txt --output-dir=results/i3d_features_10s"
     elif fps != 16 and finetune:
-        text += " --finetune --datasets datasets/i3d_"+str(fps)+"fps_afterMaxPool3d_datasets_list.txt --output-dir=i3d_features_30s_"+str(fps)+"fps_finetuned"
+        text += " --finetune --datasets datasets/i3d_"+str(fps)+"fps_afterMaxPool3d_datasets_list.txt --output-dir=results/i3d_features_30s_"+str(fps)+"fps_finetuned"
     elif fps != 16:
-        text += " --datasets datasets/i3d_"+str(fps)+"fps_mixed5c_datasets_list.txt --output-dir=i3d_features_30s_"+str(fps)+"fps"
+        text += " --datasets datasets/i3d_"+str(fps)+"fps_mixed5c_datasets_list.txt --output-dir=results/i3d_features_30s_"+str(fps)+"fps"
     else:
-        text += " --datasets datasets/datasets_list.txt --output-dir=i3d_features"
+        text += " --datasets datasets/datasets_list.txt --output-dir=results/i3d_features"
 
-else: text += " --output-dir=google_features"
+else: text += " --output-dir=results/google_features"
 
 learning_rate =[0.00005, 0.0005, 0.005, 0.05]
 weight_decay = [0.01, 0.001, 0.0001, 0.00001, 0.000001] 

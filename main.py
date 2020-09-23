@@ -398,8 +398,9 @@ class AONet:
 
     
     def ranking_corr_coeffs(self, machine_scores, gt_scores):
-        #k_coeff = stats.kendalltau(machine_scores, gt_scores)
-        #s_coeff = stats.spearmanr(machine_scores, gt_scores)
+
+        # k_coeff = stats.kendalltau(machine_scores, gt_scores)
+        # s_coeff = stats.spearmanr(machine_scores, gt_scores)
         
         sorted_machine_scores = np.argsort(machine_scores)
         sorted_gt_scores = np.argsort(gt_scores)
@@ -537,11 +538,11 @@ def eval_split(hps, splits_filename, output_file, data_dir='test'):
 
 def train(hps):
     os.makedirs(hps.output_dir, exist_ok=True)
-    os.makedirs(os.path.join(hps.output_dir, 'splits'), exist_ok=True)
-    os.makedirs(os.path.join(hps.output_dir, 'code'), exist_ok=True)
+    #os.makedirs(os.path.join(hps.output_dir, 'splits'), exist_ok=True)
+    #os.makedirs(os.path.join(hps.output_dir, 'code'), exist_ok=True)
     os.makedirs(os.path.join(hps.output_dir, 'models'), exist_ok=True)
-    os.system('cp -f splits/*.json  ' + hps.output_dir + '/splits/')
-    os.system('cp *.py ' + hps.output_dir + '/code/')
+    #os.system('cp -f splits/*.json  ' + hps.output_dir + '/splits/')
+    #os.system('cp *.py ' + hps.output_dir + '/code/')
 
     # Create a file to collect results from all splits
     f = open(hps.output_dir + '/results.txt', 'wt')
