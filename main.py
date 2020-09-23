@@ -341,7 +341,7 @@ class AONet:
 
             avg_loss = np.array(avg_loss)
             print("   Train loss: {0:.05f}".format(np.mean(avg_loss[:, 0])), end='')
-            print('   Test F-score avg/max: {0:0.5}/{1:0.5}'.format(val_fscore, max_val_fscore))
+            print('   Test F-score avg/max: {0:0.5}/{1:0.5}'.format(val_fscore, max_val_fscore), end='')
             print('   Test ranking coeffs Kendall/Spearman: {0:0.5}/{1:0.5}'.format(mean_kendall_corr_coeff, mean_spearman_corr_coeff))
             
             # Send losses and accuracies to tensorboard 
@@ -587,13 +587,10 @@ def train(hps):
             log_file = os.path.join(hps.output_dir, 'models', log_dir) + '_' + str(fscore) + '.tar.pth'
 
             os.makedirs(os.path.join(hps.output_dir, 'models', ), exist_ok=True)
-            print('mv ' + hps.output_dir + '/models_temp/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ' + log_file)
-            print(os.path.exists(os.path.join(hps.output_dir, 'models')))
             os.system('mv ' + hps.output_dir + '/models_temp/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ' + log_file)
             os.system('rm -rf ' + hps.output_dir + '/models_temp/' + log_dir)
 
-            print("Split: {0:}   Best F-score: {1:0.5f}   "+\
-                  "K coeff: {2:0.5f}   S coeff: {3:0.5f}   Model: {4:}".format(split_filename, fscore, fscore_kcoeff, fscore_scoeff, log_file))
+            print("Split: {0:}   Best F-score: {1:0.5f}   K coeff: {2:0.5f}   S coeff: {3:0.5f}   Model: {4:}".format(split_filename, fscore, fscore_kcoeff, fscore_scoeff, log_file))
 
         # Write average F-score for all splits to the results.txt file
         f_avg /= n_folds
