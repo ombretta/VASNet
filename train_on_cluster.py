@@ -1,6 +1,6 @@
 import os
 
-interactive = True
+interactive = False
 
 text = ''
 
@@ -18,17 +18,17 @@ if not interactive:
     "srun python main.py "
 else: text += "python main.py "
 
-train = False
+train = True
 if train: text += "--train "
 
-features_type = "google"
+features_type = "i3d"
 
 ten_seconds_features = False
 three_seconds_features = False
-finetune = True
+finetune = False
 store_intermediate_results = True
-backbone = "I3D_afterMaxPool3d" #"I3D"
-fps = 2
+backbone = "I3D" #"I3D_afterMaxPool3d" #"I3D"
+fps = 16
 
 if features_type == "i3d":
     if finetune and fps==16:
@@ -74,4 +74,4 @@ for lr in learning_rate:
                 
                 os.system("sbatch " + filename)
             else: 
-                os.system("sbatch " + full_text)
+                os.system(full_text)
