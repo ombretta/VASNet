@@ -538,11 +538,11 @@ def eval_split(hps, splits_filename, output_file, data_dir='test'):
 
 def train(hps):
     os.makedirs(hps.output_dir, exist_ok=True)
-    os.makedirs(os.path.join(hps.output_dir, 'splits'), exist_ok=True)
-    os.makedirs(os.path.join(hps.output_dir, 'code'), exist_ok=True)
+    # os.makedirs(os.path.join(hps.output_dir, 'splits'), exist_ok=True)
+    # os.makedirs(os.path.join(hps.output_dir, 'code'), exist_ok=True)
     os.makedirs(os.path.join(hps.output_dir, 'models'), exist_ok=True)
-    os.system('cp -f splits/*.json  ' + hps.output_dir + '/splits/')
-    os.system('cp *.py ' + hps.output_dir + '/code/')
+    # os.system('cp -f splits/*.json  ' + hps.output_dir + '/splits/')
+    # os.system('cp *.py ' + hps.output_dir + '/code/')
 
     # Create a file to collect results from all splits
     f = open(hps.output_dir + '/results.txt', 'wt')
@@ -585,9 +585,8 @@ def train(hps):
             os.system('mv ' + hps.output_dir + '/models_temp/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ' + log_file)
             os.system('rm -rf ' + hps.output_dir + '/models_temp/' + log_dir)
 
-            print("Split: {0:}   Best F-score: {1:0.5f}   "+
-                  "K coeff: {2:0.5f}   S coeff: {3:0.5f}   Model: {4:}"
-                  .format(split_filename, fscore, fscore_kcoeff, fscore_scoeff, log_file))
+            print("Split: {0:}   Best F-score: {1:0.5f}   "+\
+                  "K coeff: {2:0.5f}   S coeff: {3:0.5f}   Model: {4:}".format(split_filename, fscore, fscore_kcoeff, fscore_scoeff, log_file))
 
         # Write average F-score for all splits to the results.txt file
         f_avg /= n_folds
