@@ -583,7 +583,7 @@ def train(hps):
 
             os.makedirs(os.path.join(hps.output_dir, 'models', ), exist_ok=True)
             os.system('mv ' + hps.output_dir + '/models_temp/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ' + log_file +\
-                      hps.output_dir + '/models/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ')
+                      " " + hps.output_dir + '/models/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ')
             os.system('rm -rf ' + hps.output_dir + '/models_temp/' + log_dir)
 
             print("Split: {0:}   Best F-score: {1:0.5f}   "+\
