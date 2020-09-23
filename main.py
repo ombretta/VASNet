@@ -540,7 +540,7 @@ def train(hps):
     os.makedirs(hps.output_dir, exist_ok=True)
     # os.makedirs(os.path.join(hps.output_dir, 'splits'), exist_ok=True)
     # os.makedirs(os.path.join(hps.output_dir, 'code'), exist_ok=True)
-    # os.makedirs(os.path.join(hps.output_dir, 'models'), exist_ok=True)
+    os.makedirs(os.path.join(hps.output_dir, 'models'), exist_ok=True)
     # os.system('cp -f splits/*.json  ' + hps.output_dir + '/splits/')
     # os.system('cp *.py ' + hps.output_dir + '/code/')
 
@@ -560,6 +560,9 @@ def train(hps):
             datasets = hps.datasets
 
         f_avg = 0
+        fscore_kcoeff_avg = 0
+        fscore_scoeff_avg = 0
+        
         n_folds = len(splits)
         for split_id in range(n_folds):
             ao = AONet(hps)
@@ -570,9 +573,11 @@ def train(hps):
 
             fscore, fscore_epoch, fscore_kcoeff, fscore_scoeff = ao.train(output_dir=hps.output_dir)
             f_avg += fscore
-
+            fscore_kcoeff_avg += fscore_kcoeff
+            fscore_scoeff_avg += fscore_scoeff
+            
             # Log F-score for this split_id
-            f.write(split_filename + ', ' + str(split_id) + ', ' + str(fscore) + ', ' + str(fscore_epoch) + '\n')
+            f.write(split_filename + ', ' + str(split_id) + ', ' + str(fscore) + ', ' + str(fscore_kcoeff) + ', ' + str(fscore_scoeff) + ', ' + str(fscore_epoch) + '\n')
             f.flush()
 
             # Save model with the highest F score
@@ -582,8 +587,10 @@ def train(hps):
             log_file = os.path.join(hps.output_dir, 'models', log_dir) + '_' + str(fscore) + '.tar.pth'
 
             os.makedirs(os.path.join(hps.output_dir, 'models', ), exist_ok=True)
-            os.system('mv ' + hps.output_dir + '/models_temp/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ' + log_file +\
-                      " " + hps.output_dir + '/models/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ')
+
+            print('mv ' + hps.output_dir + '/models_temp/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ' + log_file)
+            print(os.path.exists(os.path.join(hps.output_dir, 'models')))
+            os.system('mv ' + hps.output_dir + '/models_temp/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ' + log_file)
             os.system('rm -rf ' + hps.output_dir + '/models_temp/' + log_dir)
 
             print("Split: {0:}   Best F-score: {1:0.5f}   "+\
@@ -591,7 +598,10 @@ def train(hps):
 
         # Write average F-score for all splits to the results.txt file
         f_avg /= n_folds
-        f.write(split_filename + ', ' + str('avg') + ', ' + str(f_avg) + '\n')
+        fscore_kcoeff_avg /= n_folds
+        fscore_scoeff_avg /= n_folds
+        
+        f.write(split_filename + ', ' + str('avg') + ', ' + str(f_avg) + ', ' + str(fscore_kcoeff_avg) + ', ' + str(fscore_scoeff_avg) + '\n')
         f.flush()
 
     f.close()
