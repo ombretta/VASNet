@@ -540,7 +540,7 @@ def train(hps):
     os.makedirs(hps.output_dir, exist_ok=True)
     # os.makedirs(os.path.join(hps.output_dir, 'splits'), exist_ok=True)
     # os.makedirs(os.path.join(hps.output_dir, 'code'), exist_ok=True)
-    # os.makedirs(os.path.join(hps.output_dir, 'models'), exist_ok=True)
+    os.makedirs(os.path.join(hps.output_dir, 'models'), exist_ok=True)
     # os.system('cp -f splits/*.json  ' + hps.output_dir + '/splits/')
     # os.system('cp *.py ' + hps.output_dir + '/code/')
 
@@ -587,8 +587,9 @@ def train(hps):
             log_file = os.path.join(hps.output_dir, 'models', log_dir) + '_' + str(fscore) + '.tar.pth'
 
             os.makedirs(os.path.join(hps.output_dir, 'models', ), exist_ok=True)
-            os.system('mv ' + hps.output_dir + '/models_temp/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ' + log_file +\
-                      " " + hps.output_dir + '/models/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ')
+            print('mv ' + hps.output_dir + '/models_temp/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ' + log_file)
+            print(os.path.exists(os.path.join(hps.output_dir, 'models')))
+            os.system('mv ' + hps.output_dir + '/models_temp/' + log_dir + '/' + str(fscore_epoch) + '_*.pth.tar ' + log_file)
             os.system('rm -rf ' + hps.output_dir + '/models_temp/' + log_dir)
 
             print("Split: {0:}   Best F-score: {1:0.5f}   "+\
