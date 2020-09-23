@@ -398,7 +398,7 @@ class AONet:
 
     
     def ranking_corr_coeffs(self, machine_scores, gt_scores):
-        
+
         # k_coeff = stats.kendalltau(machine_scores, gt_scores)
         # s_coeff = stats.spearmanr(machine_scores, gt_scores)
         
@@ -407,7 +407,7 @@ class AONet:
         
         k_coeff = stats.kendalltau(sorted_machine_scores, sorted_gt_scores)
         s_coeff = stats.spearmanr(sorted_machine_scores, sorted_gt_scores)
-        
+
         return k_coeff[0], s_coeff[0]
     
     
