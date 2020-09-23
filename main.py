@@ -9,7 +9,7 @@ import os
 import sys
 import torch
 import numpy as np
-import scipy
+from scipy import stats
 import time
 import glob
 import random
@@ -398,8 +398,8 @@ class AONet:
 
     
     def ranking_corr_coeffs(self, machine_scores, gt_scores):
-        k_coeff = scipy.stats.kendalltau(machine_scores, gt_scores)
-        s_coeff = scipy.stats.spearmanr(machine_scores, gt_scores)
+        k_coeff = stats.kendalltau(machine_scores, gt_scores)
+        s_coeff = stats.spearmanr(machine_scores, gt_scores)
         return k_coeff[0], s_coeff[0]
     
     
@@ -636,7 +636,7 @@ if __name__ == "__main__":
     output_file.close()
     
     print("\nFinal Results:")
-    print_table(results, cell_width=[5, 35, 8, 8, 8])
+    print_table(results, cell_width=[3, 35, 8, 8, 8])
         
     sys.exit(0)
 
